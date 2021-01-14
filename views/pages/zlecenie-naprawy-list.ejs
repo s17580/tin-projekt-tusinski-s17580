@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pl-PL"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoServis CarTu</title>
+    <link rel="stylesheet" href="../css/style.css" type="text/css">
+    <!-- <link rel="stylesheet" href="css/style.css" type= "text/css" /> -->
+</head>
+<body>
+    
+<header>
+    <h1>AutoService CarTu</h1>
+    <img src="../images/logo.png" alt="">
+</header>
+<nav>
+    <ul>
+        <li><a href ="panel.html">Strona główna</a></li>
+        <li><a href ="uzytkownik-list.html">Użytkownik</a></li>
+        <li><a href ="samochod-list.html">Samochód</a></li>
+        <li><a href ="zlecenie-naprawy-list.html"class="active">Zlecenie naprawy</a></li>
+        <li><a href ="warsztat-list.html">Warsztat</a></li>
+        <li><a href ="adres.html">Adres</a></li>
+        <li><a href ="../index.html">Wyloguj</a></li>
+        
+    </ul>
+</nav>
+<main>
+    <h2>Lista zleconych napraw</h2>
+    
+    <table class="table-list">
+        <thead>
+            <tr>
+                <th>Marka</th>
+                <th>Typ</th>
+                <th>Numer rej.</th>
+                <th>Nazwa warsztatu</th>
+                <th>Rodzaj naprawy</th>
+                <th>Data od</th>
+                <th>Data do</th>
+                <th>Koszt naprawy</th>
+                <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>BMW</td>
+                <td>330d</td>
+                <td>Wj3451TR</td>
+                <td>Bemowo CarTu</td>
+                <td>Wymiana klocków</td>
+                <td>2020.11.12</td>
+                <td>2020.11.14</td>
+                <td>1200 PLN</td>
+                <td>
+                    <ul class ="list-actions">
+                        <li>
+                            <a href="zlecenie-naprawy-details.html"class = "list-actions-button-details">Szczegóły</a>
+                        </li>
+                        <li>
+                            <a href="zlecenie-naprawy-edit.html"class = "list-actions-button-edit">Edytuj</a>
+                        </li>
+                        <li>
+                            <a href=""class="list-actions-button-delete">Usuń</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </thead>
+            <tr>
+                <td>VW</td>
+                <td>Passat</td>
+                <td>WWL5051GH</td>
+                <td>Białołęka CarTu</td>
+                <td>Psek rozrządu</td>
+                <td>2020.11.09</td>
+                <td>2020.11.10</td>
+                <td>700 PLN</td>
+                <td>
+                    <ul class ="list-actions">
+                        <li>
+                            <a href=""class = "list-actions-button-details">Szczegóły</a>
+                        </li>
+                        <li>
+                            <a href=""class = "list-actions-button-edit">Edytuj</a>
+                        </li>
+                        <li>
+                            <a href=""class="list-actions-button-delete">Usuń</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <!-- Tu wstaw dodatkowe wiersze -->
+        </tbody>
+    </table>
+    <p><a class = "button-add" href="zlecenie_naprawy_form.html">Dodaj nowe zlecenie naprawy</a></p>
+</main>
+<footer>
+    Karol,Tusiński, s17580
+</footer>
+    
+</body>
+</html>
+
+

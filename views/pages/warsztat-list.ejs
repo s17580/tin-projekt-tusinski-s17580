@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pl-PL"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoServis CarTu</title>
+    <link rel="stylesheet" href="../css/style.css" type= "text/css" />
+</head>
+<body>
+    
+<header>
+    <h1>AutoService CarTu</h1>
+    <img src="../images/logo.png" alt="">
+</header>
+<nav>
+    <ul>
+        <li><a href ="panel.html">Strona główna</a></li>
+        <li><a href ="uzytkownik-list.html">Użytkownik</a></li>
+        <li><a href ="samochod-form.html">Samochód</a></li>
+        <li><a href ="zlecenie-naprawy-list.html">Zlecenie naprawy</a></li>
+        <li><a href =""class="active">Warsztat</a></li>
+        <li><a href ="adres.html">Adres</a></li>
+        <li><a href ="../index.html">Wyloguj</a></li>
+        <!-- <li><a href ="">Strona główna</a></li>
+        <li><a href ="">Strona główna</a></li> -->
+    </ul>
+</nav>
+<main>
+    <h2>Lista warsztatów</h2>
+    
+    <table class="table-list">
+        <thead>
+            <tr>
+                <th>Nazwa warsztatu</th>
+                <th>Telefon</th>
+                <th>E-mail</th>
+                <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Bemowo CarTu</td>
+                <td>22 564 23 56</td>
+                <td>bemowo@cartu.pl</td>
+                <!-- <td>Górczewska 35 01-460 Warszawa</td> -->
+                <td>
+                    <ul class ="list-actions">
+                        <li>
+                            <a href="warsztat-details.html" class = "list-actions-button-details">Szczegóły</a>
+                        </li>
+                        <li>
+                            <a href="warsztat-edit.html" class="list-actions-button-edit">Edytuj</a>
+                        </li>
+                        <li>
+                            <a href="" class="list-actions-button-delete">Usuń</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Białołęka CarTu</td>
+                <td>22 577 32 44</td>
+                <td>bialoleka@cartu.pl</td>
+                <!-- <td>Kasztanowa 45 03-185 Warszawa</td> -->
+                <td>
+                    <ul class ="list-actions">
+                        <li>
+                            <a href="" class = "list-actions-button-details">Szczegóły</a>
+                        </li>
+                        <li>
+                            <a href="" class = "list-actions-button-edit">Edytuj</a>
+                        </li>
+                        <li>
+                            <a href="" class="list-actions-button-delete">Usuń</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <!-- Tu wstaw dodatkowe wiersze -->
+        </tbody>
+    </table>
+    <p><a class = "button-add" href="warsztat-form.html">Dodaj nowy warsztat</a></p>
+</main>
+<footer>
+    Karol,Tusiński, s17580
+</footer>
+    
+</body>
+</html>
+
+

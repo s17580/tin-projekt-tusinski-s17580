@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pl-PL"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoServis CarTu</title>
+    <link rel="stylesheet" href="../css/style.css"/>
+    <script defer type="application/javascript" src="../js/validationCommon.js"></script>
+    <script defer type="application/javascript" src="../js/validationWarsztatForm.js"></script>
+</head>
+<body>
+    
+<header>
+    <h1>AutoService CarTu</h1>
+    <img src="../images/logo.png" alt="">
+</header>
+<nav>
+    <ul>
+        <li><a href ="panel.html">Strona główna</a></li>
+        <li><a href ="uzytkownik-list.html">Użytkownik</a></li>
+        <li><a href ="samochod-list.html">Samochód</a></li>
+        <li><a href ="zlecenie-naprawy-list.html">Zlecenie naprawy</a></li>
+        <li><a href ="warsztat-list.html"class="active">Warsztat</a></li>
+        <li><a href ="adres.html">Adres</a></li>
+        <li><a href ="../index.html">Wyloguj</a></li>
+        
+    </ul>
+</nav>
+<main>
+    <h2>Nowy warsztat</h2>
+    <form class="form" onsubmit="return validateForm();" novalidate onsubmit="return validateForm();">
+
+        
+        <label for="nazwa_warsztat">Nazwa warsztatu:<abbr title="required" aria-label="required">*</abbr></label>
+        <input type="text" name="nazwa_warsztat" id="nazwa_warsztat" placeholder="2-30 znaków" />
+        <span id="errorNazwa_Warsztat" class="errors-text"></span>
+       
+        
+        <label for="telefon">Telefon:<abbr title="required" aria-label="required">*</abbr></label>
+        <input type="text" name="telefon" id="telefon" placeholder="3-25 znaków" />
+        <span id="errorTelefon" class="errors-text"></span>
+       
+
+        <label for="email">E-mail:<abbr title="required" aria-label="required">*</abbr></label>
+        <input type="email" name="email" id="email" placeholder="np. nazwa@domena.pl" />
+        <span id="errorEmail" class="errors-text"></span>
+        
+        
+        <div class = "form-buttons" >
+            <p id="errorsSummary" class="errors-text"></p>
+            <input class = "form-button-submit" type="submit" value="Dodaj" />
+            <a class = "form-button-cancel" href="warsztat-list.html">Anuluj</a>    
+        </div>  
+        
+    </form>
+    
+</main>
+<footer>
+    Karol,Tusiński, s17580
+</footer>
+    
+</body>
+</html>
+
+

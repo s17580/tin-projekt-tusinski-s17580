@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pl-PL"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoServis CarTu</title>
+    <link rel="stylesheet" href="../css/style.css"/>
+</head>
+<body>  
+<header>
+    <h1>AutoService CarTu</h1>
+    <img src="../images/logo.png" alt="">
+</header>
+<nav>
+    <ul>
+        <li><a href ="panel.html">Strona główna</a></li>
+        <li><a href ="uzytkownik-list.html">Użytkownik</a></li>
+        <li><a href ="samochod-list.html"class="active">Samochód</a></li>
+        <li><a href ="zlecenie-naprawy-list.html">Zlecenie naprawy</a></li>
+        <li><a href ="warsztat-list.html">Warsztat</a></li>
+        <li><a href ="adres.html">Adres</a></li>
+        <li><a href ="../index.html">Wyloguj</a></li>
+        
+    </ul>
+</nav>
+<main>
+    <h2>Edycja samochodu</h2>
+    
+    <form class="form">
+
+        
+        <label for="marka">Marka:<sup></sup></label>
+        <input type="text" name="marka" value="BMW" id="marka" />
+        <span></span>
+
+        <label for="typ">Typ:<sup></sup></label>
+        <input type="text" name="typ" value="330d" id="typ"/>
+        <span></span>
+
+        
+        <label for="numer_rejestracyjny">Numer rej.:<sup></sup></label>
+        <input type="text" name="numer_rejestracyjny" value="Wj3451TRd" id="numer_rejestracyjny"/>
+        <span></span>
+
+        
+        <label for="rok_produkcji">Rok produkcji :<sup></sup></label>
+        <input type="text" name="rok_produkcji" value="2017" id="rok_produkcji"/>
+        <span></span>
+
+        
+        <label for="pojemnosc">Pojemność:<sup></sup></label>
+        <input type="text" name="pojemnosc" value="3300 cm3" id="pojemnosc"/>
+        <span></span>
+
+        <div class = "form-buttons" >
+            <input class = "form-button-submit" type="submit" value="Zapisz"/>
+            <a class = "form-button-cancel" href="adres.html">Anuluj</a>    
+        </div> 
+    </form>
+
+</main>
+
+
+<footer>
+    Karol,Tusiński, s17580
+</footer>
+    
+</body>
+</html>
+
+

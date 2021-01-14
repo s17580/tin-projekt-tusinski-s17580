@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pl-PL"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoServis CarTu</title>
+    <link rel="stylesheet" href="../css/style.css"/>
+</head>
+<body>  
+<header>
+    <h1>AutoService CarTu</h1>
+    <img src="../images/logo.png" alt="">
+</header>
+<nav>
+    <ul>
+        <li><a href ="panel.html">Strona główna</a></li>
+        <li><a href ="uzytkownik-list.html">Użytkownik</a></li>
+        <li><a href ="samochod-list.html">Samochód</a></li>
+        <li><a href ="zlecenie-naprawy-list.html">Zlecenie naprawy</a></li>
+        <li><a href ="warsztat-list.html">Warsztat</a></li>
+        <li><a href ="adres.html"class="active">Adres</a></li>
+        <li><a href ="../index.html">Wyloguj</a></li>
+        
+</nav>
+<main>
+    <h2>Lista adresów</h2>
+    
+    <table class="table-list"> 
+        
+        <thead>
+            <tr>
+                <th>Ulia</th>
+                <th>Numer lokalu</th>
+                <th>Kod pocztowy</th>
+                <th>Miasto</th>
+                <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Górczewska</td>
+                <td>35</td>
+                <td>01-460</td>
+                <td>Warszawa</td>
+                <td>
+                    <ul class ="list-actions">
+                        <li>
+                            <a href="adres-edit.html"class = "list-actions-button-edit">Edytuj</a>
+                        </li>
+                        <li>
+                            <a href=""class="list-actions-button-delete">Usuń</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Białobrzeska</td>
+                <td>53</td>
+                <td>02-325</td>
+                <td>Warszawa</td>
+                <td>
+                    <ul class ="list-actions">
+                        <li>
+                            <a href=""class = "list-actions-button-edit">Edytuj</a>
+                        </li>
+                        <li>
+                            <a href=""class="list-actions-button-delete">Usuń</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <!-- Tu wstaw dodatkowe wiersze -->
+        </tbody>
+    </table>
+    <p><a class = "button-add" href="adres-form.html">Dodaj nowy adres</a>
+
+    
+    </p>
+</main>
+<footer>
+    Karol,Tusiński, s17580
+</footer>
+    
+</body>
+</html>
+
+

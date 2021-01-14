@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pl-PL"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoServis CarTu</title>
+    <link rel="stylesheet" href="../css/style.css"/>
+</head>
+<body>  
+<header>
+    <h1>AutoService CarTu</h1>
+    <img src="../images/logo.png" alt="">
+</header>
+<nav>
+    <ul>
+        <li><a href ="panel.html">Strona główna</a></li>
+        <li><a href ="uzytkownik-list.html">Użytkownik</a></li>
+        <li><a href ="samochod-list.html">Samochód</a></li>
+        <li><a href ="zlecenie-naprawy-list.html"class="active">Zlecenie naprawy</a></li>
+        <li><a href ="warsztat-list.html">Warsztat</a></li>
+        <li><a href ="adres.html">Adres</a></li>
+        <li><a href ="../index.html">Wyloguj</a></li>
+        
+    </ul>
+</nav>
+<main>
+    <h2>Edycja zlecenia naprawy</h2>
+
+    <form class="form">
+
+        <label for="samochod">Samochód:<sup></sup></label>
+        <select name="samochod" id="samochod"><option>BMW 330d</option></select>
+        <span></span>
+
+        <label for="numer_rej">Numer rej:<sup></sup></label>
+        <input type="text" name="numer_rej" value="Wj3451TR" id="numer_rej"/>
+        <span></span>
+
+        <label for="rok_prod">Rok produkcji:<sup></sup></label>
+        <input type="text" name="rok_prod" value="2017" id="rok_prod"/>
+        <span></span>
+
+        
+        <label for="rodzaj">Rodzaj naprawy:<sup></sup></label>
+        <input type="text" name="rodzaj" value="Wymiana klocków" id="rodzaj"/>
+        <span></span>
+        
+
+        
+        <label for="data_od">Data od:<sup></sup></label>
+        <input type="text" name="data_od" value="2020.11.12" id="data_od"/>
+        <span></span>
+        
+
+        
+            <label for="data_do">Data do:<sup></sup></label>
+            <input type="text" name="data_do" value="2020.11.14" id="data_do"/>
+            <span></span>
+        
+
+       
+        <label for="koszt_naprawy">Koszt naprawy :<sup></sup></label>
+        <input type="text" name="koszt_naprawy" value="1200 PLN" id="koszt_naprawy"/>
+        <span></span>
+
+        <label for="nazwa_warsztatu">Nazwa warsztatu:<sup></sup></label>
+        <input type="text" name="nazwa warsztatu" value="Bemowo CarTu" id="nazwa_warsztatu"/>
+        <span></span>
+
+        <label for="adres">Adres:<sup></sup></label>
+        <select name="adres" id="adres"><option>Górczewska 35, 01-460 Warszawa</option></select>
+        <span></span>
+        
+
+        <div class = "form-buttons" >
+            <input class = "form-button-submit" type="submit" value="Zapisz"/>
+            <a class = "form-button-cancel" href="zlecenie-naprawy-list.html">Anuluj</a>    
+        </div>  
+    
+    </form>
+</main>
+
+
+<footer>
+    Karol,Tusiński, s17580
+</footer>
+    
+</body>
+</html>
+
+
