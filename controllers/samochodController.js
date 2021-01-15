@@ -1,11 +1,11 @@
 exports.showEmployeeList = (req, res, next) => {
-    res.render('pages/samochod-list/list', {});
+    res.render('pages/samochod/samochod-list', {});
 }
 exports.showAddEmployeeForm = (req, res, next) => {
-    res.render('pages/samochod-form/form', {});
+    res.render('pages/samochod/samochod-form', {});
 }
 exports.showEmployeeDetails = (req, res, next) => {
-    res.render('pages/samochod-details/details', {});
+    res.render('pages/samochod/samochod-details', {});
 }
 
 
