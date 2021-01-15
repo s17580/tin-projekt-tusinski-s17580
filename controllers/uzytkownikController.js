@@ -1,3 +1,3 @@
-// exports.showEmployeeList = (req, res, next) => {
-//     res.render('pages/uzytkownik-list/list', {});
-// }
+exports.showUzytkownikList = (req, res, next) => {
+    res.render('pages/uzytkownik/uzytkownik-list', {});
+}

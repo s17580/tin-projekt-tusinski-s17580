@@ -1,10 +1,10 @@
-exports.showEmployeeList = (req, res, next) => {
+exports.showSamochodList = (req, res, next) => {
     res.render('pages/samochod/samochod-list', {});
 }
-exports.showAddEmployeeForm = (req, res, next) => {
+exports.showAddSamochodForm = (req, res, next) => {
     res.render('pages/samochod/samochod-form', {});
 }
-exports.showEmployeeDetails = (req, res, next) => {
+exports.showSamochodnDetails = (req, res, next) => {
     res.render('pages/samochod/samochod-details', {});
 }
 
