@@ -8,6 +8,8 @@ var indexRouter = require('./routes/index');
 const samochodRouter = require('./routes/samochodRoute');
 const adresRouter = require('./routes/adresRoute');
 const uzytkownikRouter = require('./routes/uzytkownikRoute');
+const warsztatRouter = require('./routes/warsztatRoute');
+const zlecenieNaprawyRouter = require('./routes/zlecenieNaprawyRoute');
 
 var app = express();
 
@@ -25,6 +27,8 @@ app.use('/', indexRouter);
 app.use('/samochod', samochodRouter);
 app.use('/adres', adresRouter);
 app.use('/uzytkownik', uzytkownikRouter);
+app.use('/warsztat', warsztatRouter);
+app.use('/zlecenie', zlecenieNaprawyRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

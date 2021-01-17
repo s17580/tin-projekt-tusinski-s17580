@@ -1,28 +1,4 @@
-<!DOCTYPE html>
-<html lang="pl-PL"></html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoServis CarTu</title>
-    <link rel="stylesheet" href="../css/style.css"/>
-</head>
-<body>  
-<header>
-    <h1>AutoService CarTu</h1>
-    <img src="../images/logo.png" alt="">
-</header>
-<nav>
-    <ul>
-        <li><a href ="panel.html">Strona główna</a></li>
-        <li><a href ="uzytkownik-list.html">Użytkownik</a></li>
-        <li><a href ="samochod-list.html"class="active">Samochód</a></li>
-        <li><a href ="zlecenie-naprawy-list.html">Zlecenie naprawy</a></li>
-        <li><a href ="warsztat-list.html">Warsztat</a></li>
-        <li><a href ="adres.html">Adres</a></li>
-        <li><a href ="../index.html">Wyloguj</a></li>
-        
-    </ul>
-</nav>
+<%- include('../../fragments/header.ejs') %>
 <main>
     <h2>Edycja samochodu</h2>
     
@@ -59,13 +35,6 @@
     </form>
 
 </main>
-
-
-<footer>
-    Karol,Tusiński, s17580
-</footer>
-    
-</body>
-</html>
+<%- include('../../fragments/footer.ejs') %>
 
 

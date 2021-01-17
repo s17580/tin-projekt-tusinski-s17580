@@ -1,3 +1,3 @@
 exports.showUzytkownikList = (req, res, next) => {
-    res.render('pages/uzytkownik/uzytkownik-list', {});
+    res.render('pages/uzytkownik/uzytkownik-list', {navLocation: 'uzytkownik'});
 }

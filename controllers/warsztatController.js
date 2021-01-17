@@ -1,9 +1,9 @@
-exports.showEmployeeList = (req, res, next) => {
-    res.render('pages/warsztat-list/list', {});
+exports.showWarsztatList = (req, res, next) => {
+    res.render('pages/warsztat/warsztat-list', {navLocation: 'warsztat'});
 }
-exports.showAddEmployeeForm = (req, res, next) => {
-    res.render('pages/warsztat-form/form', {});
+exports.showAddWarsztatForm = (req, res, next) => {
+    res.render('pages/warsztat/warsztat-form', {navLocation: 'warsztat'});
 }
-exports.showEmployeeDetails = (req, res, next) => {
-    res.render('pages/warsztat-details/details', {});
+exports.showWarsztatDetails = (req, res, next) => {
+    res.render('pages/warsztat/warsztat-details', {navLocation: 'warsztat'});
 }

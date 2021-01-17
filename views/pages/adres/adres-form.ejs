@@ -1,31 +1,6 @@
-<!DOCTYPE html>
-<html lang="pl-PL"></html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoServis CarTu</title>
-    <link rel="stylesheet" href="../css/style.css"/>
-    <script defer type="application/javascript" src="../js/validationCommon.js"></script>
-    <script defer type="application/javascript" src="../js/validationAdresForm.js"></script>
-</head>
-<body>
-    
-<header>
-    <h1>AutoService CarTu</h1>
-    <img src="../images/logo.png" alt="">
-</header>
-<nav>
-    <ul>
-        <li><a href ="../index.html">Strona główna</a></li>
-        <li><a href ="uzytkownik-list.html">Użytkownik</a></li>
-        <li><a href ="samochod-list.html">Samochód</a></li>
-        <li><a href ="zlecenie-naprawy-list.html">Zlecenie naprawy</a></li>
-        <li><a href ="warsztat-list.html">Warsztat</a></li>
-        <li><a href ="adres.html"class="active">Adres</a></li>
-        <li><a href ="../index.html">Wyloguj</a></li>
-       
-    </ul>
-</nav>
+<%- include('../../fragments/header.ejs') %>
+<script defer type="application/javascript" src="../js/validationCommon.js"></script>
+<script defer type="application/javascript" src="../js/validationAdresForm.js"></script>
 <main>
     <h2>Nowy adres</h2>
     <form class="form" onsubmit="return validateForm();" novalidate onsubmit="return validateForm();">
@@ -56,11 +31,4 @@
     </form>
     
 </main>
-<footer>
-    Karol,Tusiński, s17580
-</footer>
-    
-</body>
-</html>
-
-
+<%- include('../../fragments/footer.ejs') %>
