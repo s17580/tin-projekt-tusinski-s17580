@@ -12,18 +12,18 @@ const Rola = require('../../model/sequelize/Rola');
 module.exports = () => {
     Uzytkownik.hasMany(Samochod);
     Samochod.belongsTo(Uzytkownik);
-    Rola.hasMany(Uzytkownik);
-    Uzytkownik.belongsTo(Rola);
+    // Rola.hasMany(Uzytkownik);
+    // Uzytkownik.belongsTo(Rola);
     Samochod.hasMany(ZlecenieNaprawy);
     ZlecenieNaprawy.belongsTo(Samochod);
-    Warsztat.hasMany(ZlecenieNaprawy);
-    ZlecenieNaprawy.belongsTo(Warsztat);
-    RodzajNaprawy.hasMany(ZlecenieNaprawy);
-    ZlecenieNaprawy.belongsTo(RodzajNaprawy);
-    Adres.hasMany(AdresWarsztat);
-    AdresWarsztat.belongsTo(Adres);
-    Warsztat.hasMany(AdresWarsztat);
-    AdresWarsztat.belongsTo(Warsztat);
+    // Warsztat.hasMany(ZlecenieNaprawy);
+    // ZlecenieNaprawy.belongsTo(Warsztat);
+    // RodzajNaprawy.hasMany(ZlecenieNaprawy);
+    // ZlecenieNaprawy.belongsTo(RodzajNaprawy);
+    // Adres.hasMany(AdresWarsztat);
+    // AdresWarsztat.belongsTo(Adres);
+    // Warsztat.hasMany(AdresWarsztat);
+    // AdresWarsztat.belongsTo(Warsztat);
 
     return sequelize
         .sync({force: true}).then( () => {
@@ -58,7 +58,10 @@ module.exports = () => {
                 });
             } else {
                 return cars;
-            }
-        });      
+            }  
+        });
+        .then
+
 };
+
 
