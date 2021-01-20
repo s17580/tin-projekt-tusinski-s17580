@@ -3,10 +3,27 @@ const sequelize = require('./sequelize');
 const Warsztat = require('../../model/sequelize/Warsztat');
 const Uzytkownik = require('../../model/sequelize/Uzytkownik');
 const Samochod = require('../../model/sequelize/Samochod');
+const ZlecenieNaprawy = require('../../model/sequelize/ZlecenieNaprawy');
+const RodzajNaprawy = require('../../model/sequelize/RodzajNaprawy');
+const Adres = require('../../model/sequelize/Adres');
+const AdresWarsztat = require('../../model/sequelize/AdresWarsztat');
+const Rola = require('../../model/sequelize/Rola');
 
 module.exports = () => {
     Uzytkownik.hasMany(Samochod);
     Samochod.belongsTo(Uzytkownik);
+    Rola.hasMany(Uzytkownik);
+    Uzytkownik.belongsTo(Rola);
+    Samochod.hasMany(ZlecenieNaprawy);
+    ZlecenieNaprawy.belongsTo(Samochod);
+    Warsztat.hasMany(ZlecenieNaprawy);
+    ZlecenieNaprawy.belongsTo(Warsztat);
+    RodzajNaprawy.hasMany(ZlecenieNaprawy);
+    ZlecenieNaprawy.belongsTo(RodzajNaprawy);
+    Adres.hasMany(AdresWarsztat);
+    AdresWarsztat.belongsTo(Adres);
+    Warsztat.hasMany(AdresWarsztat);
+    AdresWarsztat.belongsTo(Warsztat);
 
     return sequelize
         .sync({force: true}).then( () => {
