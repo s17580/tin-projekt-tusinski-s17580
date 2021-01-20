@@ -2,18 +2,12 @@ const Sequelize = require('sequelize');
 const sequelize = require('../../config/sequelize/sequelize');
 
 const Warsztat = sequelize.define('Warsztat', {
-   _id: {
-       type: Sequelize.INTEGER,
-       autoIncrement: true,
-       allowNull: false,
-       primaryKey: true,
-   },
    nazwa_warsztat: {
        type: Sequelize.STRING,
        allowNull: false
    },
    telefon: {
-       type: Sequelize.NUMBER,
+       type: Sequelize.STRING,
        allowNull: false
    },
    email: {
@@ -21,5 +15,7 @@ const Warsztat = sequelize.define('Warsztat', {
        allowNull: false,
        unique: true
    }
+}, {
+    underscored: true
 });
 module.exports = Warsztat;

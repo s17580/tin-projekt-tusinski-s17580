@@ -11,6 +11,13 @@ const uzytkownikRouter = require('./routes/uzytkownikRoute');
 const warsztatRouter = require('./routes/warsztatRoute');
 const zlecenieNaprawyRouter = require('./routes/zlecenieNaprawyRoute');
 // const samochodApiRouter = require('./routes/api/SamochodApiRoute');
+const sequelizeInit = require('./config/sequelize/init');
+sequelizeInit()
+    .catch(err => {
+        console.log(err);
+    });
+
+
 
 
 
