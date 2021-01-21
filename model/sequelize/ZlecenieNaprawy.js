@@ -11,10 +11,9 @@ const ZlecenieNaprawy = sequelize.define('ZlecenieNaprawy', {
        allowNull: false
    },
    koszt_naprawy: {
-       type: Sequelize.DECIMAL,
+       type: Sequelize.DECIMAL(7,2),
        allowNull: false,
-       unique: true
-   },
+    }
 }, {
     underscored: true
 });

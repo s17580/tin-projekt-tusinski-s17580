@@ -12,14 +12,14 @@ const Rola = require('../../model/sequelize/Rola');
 module.exports = () => {
     Uzytkownik.hasMany(Samochod);
     Samochod.belongsTo(Uzytkownik);
-    // Rola.hasMany(Uzytkownik);
-    // Uzytkownik.belongsTo(Rola);
+    Rola.hasMany(Uzytkownik);
+    Uzytkownik.belongsTo(Rola);
     Samochod.hasMany(ZlecenieNaprawy);
     ZlecenieNaprawy.belongsTo(Samochod);
-    // Warsztat.hasMany(ZlecenieNaprawy);
-    // ZlecenieNaprawy.belongsTo(Warsztat);
-    // RodzajNaprawy.hasMany(ZlecenieNaprawy);
-    // ZlecenieNaprawy.belongsTo(RodzajNaprawy);
+    Warsztat.hasMany(ZlecenieNaprawy);
+    ZlecenieNaprawy.belongsTo(Warsztat);
+    RodzajNaprawy.hasMany(ZlecenieNaprawy);
+    ZlecenieNaprawy.belongsTo(RodzajNaprawy);
     // Adres.hasMany(AdresWarsztat);
     // AdresWarsztat.belongsTo(Adres);
     // Warsztat.hasMany(AdresWarsztat);
@@ -58,10 +58,84 @@ module.exports = () => {
                 });
             } else {
                 return cars;
-            }  
+            }    
+        })
+        .then(cars => {
+            allCars = cars;
+            return ZlecenieNaprawy.findAll();
+        })
+        .then( repairorders => {
+            if( !repairorders || repairorders.length == 0 ) {
+                return ZlecenieNaprawy.bulkCreate([
+                    { data_od: '2021-01-14', data_do: '2021-01-16', koszt_naprawy: 745.40, SamochodId: 1},
+                    { data_od: '2021-01-10', data_do: '2021-01-15', koszt_naprawy: 1467.80, SamochodId: 2}
+                ])
+                .then( () => {
+                    return ZlecenieNaprawy.findAll();
+                });
+            } else {
+                return repairorders;
+            }
+              
+        })
+        .then(repairorders => {
+            allRepairorders = repairorders;
+            return Warsztat.findAll();
+        })
+        .then( carsmanufactory => {
+            if( !carsmanufactory || carsmanufactory.length == 0 ) {
+                return Warsztat.bulkCreate([
+                    { nazwa_warsztat: 'Bemowo CarTu', telefon: '22 564 23 56', email: 'bemowo@cartu.pl', WarsztatId: 1 },
+                    { nazwa_warsztat: 'Białołęka CarTu', telefon: '22 577 32 44', email: 'bialoleka@cartu.pl', WarsztatId: 2 }
+                ])
+                .then( () => {
+                    return Warsztat.findAll();
+                });
+            } else {
+                return carsmanufactory;
+            }
+              
+        })
+        .then(repairorders => {
+            allRepairorders = repairorders;
+            return RodzajNaprawy.findAll();
+        })
+        .then( typesrepair => {
+            if( !typesrepair || typesrepair.length == 0 ) {
+                return RodzajNaprawy.bulkCreate([
+                    { rodzaj: 'wymiana klocków hamulcowych', RodzajNaprawyId: 1 },
+                    { rodzaj: 'wymiana rozrządu', RodzajNaprawyId: 2 },
+                    { rodzaj: 'serwis olejowy', RodzajNaprawyId: 3 },
+                    { rodzaj: 'wymiana tarcz', RodzajNaprawyId: 4 },
+                    { rodzaj: 'diagnoza komputerowa', RodzajNaprawyId: 5 },
+                    { rodzaj: 'przegląd okresowy', RodzajNaprawyId: 6 },
+                    { rodzaj: 'wymiana płynów eksploatacyjnych', RodzajNaprawyId: 7 }
+                    
+                ])
+                .then( () => {
+                    return RodzajNaprawy.findAll();
+                });
+            } else {
+                return typesrepair;
+            } 
+        })
+        .then(users => {
+            allUsers = users;
+            return Rola.findAll();
+        })
+        .then( roles => {
+            if( !roles || roles.length == 0 ) {
+                return Rola.bulkCreate([
+                    { rola: 'administrator', RolaId: 1 },
+                    { rola: 'użytkownik', RolaId: 2 }  
+                ])
+                .then( () => {
+                    return Rola.findAll();
+                });
+            } else {
+                return roles;
+            } 
         });
-        .then
-
 };
 
 
