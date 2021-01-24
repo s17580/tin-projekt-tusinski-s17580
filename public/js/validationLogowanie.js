@@ -1,26 +1,29 @@
-const usernameInput = document.getElementById("username");
-const errorUsername = document.getElementById("errorUsername");
+const emailInput = document.getElementById("email");
+const errorUsername = document.getElementById("errorEmail");
 const passwordInput = document.getElementById("password");
 const errorPassword = document.getElementById("errorPassword");
-const password      =document.getElementById('password');
-const eye           =document.getElementById('eye');
-const crossedEye    =document.getElementById('crossedEye');
+
+
 
 const errorsSummary = document.getElementById("errorsSummary");
 
 function validateForm() {
 
-    resetErrors([usernameInput, passwordInput],[errorUsername, errorPassword], errorsSummary);
+    resetErrors([emailInput, passwordInput],[errorEmail, errorPassword], errorsSummary);
     let valid = true;
-    if (!checkRequired(usernameInput.value)) {
+    if (!checkRequired(emailInput.value)) {
       valid = false;
-      usernameInput.classList.add("error-input");
-      errorUsername.innerText = "Pole jest wymagane";
-    } else if (!checkTextLengthRange(usernameInput.value, 2, 15)) {
+      emailInput.classList.add("error-input");
+      errorEmail.innerText = "Pole jest wymagane";
+  } else if (!checkTextLengthRange(emailInput.value, 5, 40)) {
       valid = false;
-      usernameInput.classList.add("error-input");
-      errorUsername.innerText = "Pole powinno zawierać od 2 do 15 znaków";
-  }  
+      emailInput.classList.add("error-input");
+      errorEmail.innerText = "Pole powinno zawierać od 5 do 40 znaków";
+  } else if (!checkEmail(emailInput.value)) {
+      valid = false;
+      emailInput.classList.add("error-input");
+      errorEmail.innerText = "Pole powinno zawierać prawidłowy adres email";
+  }
   if (!checkRequired(passwordInput.value)) {
     valid = false;
     passwordInput.classList.add("error-input");

@@ -94,11 +94,3 @@ function checkNumberRange(value, min, max) {
     }
     return true;
 }
-function checkPassword(value) {
-    if (!value) {
-        return false;
-    }
-    value = value.toString().trim();
-    const regex = (/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d][A-Za-z\d!@#$%^&*()_+]{7,19}$/);
-    return regex.test(value);
-}

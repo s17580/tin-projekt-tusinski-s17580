@@ -1,5 +1,3 @@
-const usernameInput = document.getElementById("username");
-const errorUsername = document.getElementById("errorUsername");
 const emailInput = document.getElementById("email");
 const errorEmail = document.getElementById("errorEmail");
 const passwordInput = document.getElementById("password");
@@ -12,17 +10,8 @@ const errorsSummary = document.getElementById("errorsSummary");
 
 function validateForm() {
 
-    resetErrors([usernameInput,emailInput, passwordInput,password2Input],[errorUsername,errorEmail,errorPassword,errorPassword2], errorsSummary);
+    resetErrors([emailInput, passwordInput,password2Input],[errorEmail,errorPassword,errorPassword2], errorsSummary);
     let valid = true;
-    if (!checkRequired(usernameInput.value)) {
-      valid = false;
-      usernameInput.classList.add("error-input");
-      errorUsername.innerText = "Pole jest wymagane";
-    } else if (!checkTextLengthRange(usernameInput.value, 2, 15)) {
-      valid = false;
-      usernameInput.classList.add("error-input");
-      errorUsername.innerText = "Pole powinno zawierać od 2 do 15 znaków";
-  }
   if (!checkRequired(emailInput.value)) {
     valid = false;
     emailInput.classList.add("error-input");
