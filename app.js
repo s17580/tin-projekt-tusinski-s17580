@@ -43,9 +43,7 @@ app.use("/samochod", require("./routes/carRoutes"));
 app.use("/adres", require("./routes/addresRoutes"));
 app.use("/uzytkownik", require("./routes/userRoutes"));
 app.use("/warsztat", require("./routes/workshopRoutes"));
-app.use("/zlecenie", require("./routes/zlecenieNaprawyRoute"));
-app.use("/logowanie", require("./routes/authRoutes"));
-app.use("/rejestracja", require("./routes/rejestracjaRoute"));
+app.use("/zlecenie", require("./routes/repairOrderRoutes"));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -1,8 +1,9 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const zlecenieNaprawyControler = require('../controllers/zlecenieNaprawyController');
+const repairOrderController = require("../controllers/repairOrderController");
 
-router.get('/', zlecenieNaprawyControler.showZlecenieNaprawyList);
-router.get('/add', zlecenieNaprawyControler.showAddZlecenieNaprawyForm);
+router.get("/", repairOrderController.showZlecenieNaprawyList);
+router.get("/add", repairOrderController.showAddZlecenieNaprawyForm);
 //router.get('/details/:samochodId', samochodControler.showSamochodDetails);
+
 module.exports = router;

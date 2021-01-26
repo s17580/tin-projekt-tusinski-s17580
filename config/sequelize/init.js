@@ -6,7 +6,6 @@ const Car = require("../../model/sequelize/Car");
 const RepairOrder = require("../../model/sequelize/RepairOrder");
 const RepairType = require("../../model/sequelize/RepairType");
 const Address = require("../../model/sequelize/Address");
-const WorkshopAddress = require("../../model/sequelize/WorkshopAddress");
 const Role = require("../../model/sequelize/Role");
 
 module.exports = () => {
@@ -23,22 +22,35 @@ module.exports = () => {
   RepairType.hasMany(RepairOrder);
 
   Workshop.hasMany(RepairOrder);
-  Workshop.hasMany(WorkshopAddress);
-  WorkshopAddress.belongsTo(Workshop);
-  WorkshopAddress.belongsTo(Address);
-  Address.hasMany(WorkshopAddress);
+  Workshop.belongsTo(Address);
+  Address.hasMany(Workshop);
 
   return sequelize
     .sync({ force: true })
+    .then(() => {
+      return Role.findAll();
+    })
+    .then((roles) => {
+      if (!roles || roles.length == 0) {
+        return Role.bulkCreate([
+          { name: "administrator" },
+          { name: "użytkownik" },
+        ]).then(() => {
+          return Role.findAll();
+        });
+      } else {
+        return roles;
+      }
+    })
     .then(() => {
       return User.findAll();
     })
     .then((users) => {
       if (!users || users.length == 0) {
         return User.bulkCreate([
-          { email: "test@test.com", password: "test123" },
-          { email: "karol@test.com", password: "test123" },
-          { email: "gosia@test.com", password: "test123" },
+          { email: "administrator@test.com", password: "test123", RoleId: 1 },
+          { email: "uzytkownik@test.com", password: "test123", RoleId: 2 },
+          { email: "gosia@test.com", password: "test123", RoleId: 2 },
         ]).then(() => {
           return User.findAll();
         });
@@ -76,54 +88,6 @@ module.exports = () => {
       }
     })
     .then(() => {
-      return RepairOrder.findAll();
-    })
-    .then((repairOrders) => {
-      if (!repairOrders || repairOrders.length == 0) {
-        return RepairOrder.bulkCreate([
-          {
-            data_od: "2021-01-14",
-            data_do: "2021-01-16",
-            koszt_naprawy: 745.4,
-            CarId: 1,
-          },
-          {
-            data_od: "2021-01-10",
-            data_do: "2021-01-15",
-            koszt_naprawy: 1467.8,
-            CarId: 2,
-          },
-        ]).then(() => {
-          return RepairOrder.findAll();
-        });
-      } else {
-        return repairOrders;
-      }
-    })
-    .then(() => {
-      return Workshop.findAll();
-    })
-    .then((workshops) => {
-      if (!workshops || workshops.length == 0) {
-        return Warsztat.bulkCreate([
-          {
-            nazwa_warsztat: "Bemowo CarTu",
-            telefon: "22 564 23 56",
-            email: "bemowo@cartu.pl",
-          },
-          {
-            nazwa_warsztat: "Białołęka CarTu",
-            telefon: "22 577 32 44",
-            email: "bialoleka@cartu.pl",
-          },
-        ]).then(() => {
-          return Workshop.findAll();
-        });
-      } else {
-        return workshops;
-      }
-    })
-    .then(() => {
       return RepairType.findAll();
     })
     .then((repairTypes) => {
@@ -143,20 +107,95 @@ module.exports = () => {
         return repairTypes;
       }
     })
-    .then((users) => {
-      allUsers = users;
-      return Rola.findAll();
+    .then(() => {
+      return Address.findAll();
     })
-    .then((roles) => {
-      if (!roles || roles.length == 0) {
-        return Rola.bulkCreate([
-          { rola: "administrator", RolaId: 1 },
-          { rola: "użytkownik", RolaId: 2 },
+    .then((addresses) => {
+      if (!addresses || addresses.length == 0) {
+        return Address.bulkCreate([
+          {
+            ulica: "Powstańców Śląskich",
+            numer_lokalu: "126",
+            kod_pocztowy: "01-466",
+            miasto: "Warszawa",
+          },
+          {
+            ulica: "Modlińska",
+            numer_lokalu: "36",
+            kod_pocztowy: "03-170",
+            miasto: "Warszawa",
+          },
+          {
+            ulica: "Połoczyńska",
+            numer_lokalu: "119",
+            kod_pocztowy: "01-304",
+            miasto: "Warszawa",
+          },
+          {
+            ulica: "Białołęcka",
+            numer_lokalu: "170",
+            kod_pocztowy: "03-253",
+            miasto: "Warszawa",
+          },
         ]).then(() => {
-          return Rola.findAll();
+          return Address.findAll();
         });
       } else {
-        return roles;
+        return addresses;
+      }
+    })
+    .then(() => {
+      return Workshop.findAll();
+    })
+    .then((workshops) => {
+      if (!workshops || workshops.length == 0) {
+        return Workshop.bulkCreate([
+          {
+            nazwa: "Bemowo CarTu",
+            telefon: "22 564 23 56",
+            email: "bemowo@cartu.pl",
+            AddressId: 1,
+          },
+          {
+            nazwa: "Białołęka CarTu",
+            telefon: "22 577 32 44",
+            email: "bialoleka@cartu.pl",
+            AddressId: 2,
+          },
+        ]).then(() => {
+          return Workshop.findAll();
+        });
+      } else {
+        return workshops;
+      }
+    })
+    .then(() => {
+      return RepairOrder.findAll();
+    })
+    .then((repairOrders) => {
+      if (!repairOrders || repairOrders.length == 0) {
+        return RepairOrder.bulkCreate([
+          {
+            data_od: "2021-01-14",
+            data_do: "2021-01-16",
+            koszt_naprawy: 745.4,
+            CarId: 1,
+            WorkshopId: 1,
+            RepairTypeId: 3,
+          },
+          {
+            data_od: "2021-01-10",
+            data_do: "2021-01-15",
+            koszt_naprawy: 1467.8,
+            CarId: 2,
+            WorkshopId: 2,
+            RepairTypeId: 2,
+          },
+        ]).then(() => {
+          return RepairOrder.findAll();
+        });
+      } else {
+        return repairOrders;
       }
     });
 };
