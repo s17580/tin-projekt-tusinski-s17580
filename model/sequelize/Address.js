@@ -1,7 +1,7 @@
 // const Sequelize = require('sequelize');
 // const sequelize = require('../../config/sequelize/sequelize');
 
-// const Adres = sequelize.define('Adres', {
+// const Address = sequelize.define('Address', {
 //    ulica: {
 //        type: Sequelize.STRING(30),
 //        allowNull: false
@@ -21,4 +21,4 @@
 // }, {
 //     underscored: true
 // });
-// module.exports = Adres;
+// module.exports = Address;

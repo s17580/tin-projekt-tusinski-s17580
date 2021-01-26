@@ -1,10 +1,10 @@
 // const Sequelize = require('sequelize');
 // const sequelize = require('../../config/sequelize/sequelize');
 
-// const AdresWarsztat = sequelize.define('AdresWarsztat', {
-   
-// }, 
+// const WorkshopAddress = sequelize.define('WorkshopAddress', {
+
+// },
 // {
 //     underscored: true
 // });
-// module.exports = AdresWarsztat;
+// module.exports = WorkshopAddress;
