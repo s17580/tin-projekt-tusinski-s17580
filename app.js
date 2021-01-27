@@ -4,7 +4,9 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const session = require("express-session");
+const flash = require("connect-flash");
 const sequelizeInit = require("./config/sequelize/init");
+const authUtils = require("./utils/authUtils");
 
 sequelizeInit().catch((err) => {
   console.log(err);
@@ -21,6 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+app.use(flash());
 
 app.use(
   session({
@@ -32,18 +35,17 @@ app.use(
 app.use((req, res, next) => {
   const loggedUser = req.session.loggedUser;
   res.locals.loggedUser = loggedUser;
-  if (!res.locals.loginError) {
-    res.locals.loginError = undefined;
-  }
+  res.locals.successMessage = req.flash("success")[0];
+  res.locals.errorMessage = req.flash("error")[0];
   next();
 });
 
 app.use("/", require("./routes/index"));
-app.use("/samochod", require("./routes/carRoutes"));
-app.use("/adres", require("./routes/addresRoutes"));
-app.use("/uzytkownik", require("./routes/userRoutes"));
-app.use("/warsztat", require("./routes/workshopRoutes"));
-app.use("/zlecenie", require("./routes/repairOrderRoutes"));
+app.use("/samochod", authUtils.permitAuthenticatedUser, require("./routes/carRoutes"));
+app.use("/adres", authUtils.permitAuthenticatedUser, require("./routes/addresRoutes"));
+app.use("/uzytkownik", authUtils.permitAuthenticatedUser, require("./routes/userRoutes"));
+app.use("/warsztat", authUtils.permitAuthenticatedUser, require("./routes/workshopRoutes"));
+app.use("/zlecenie", authUtils.permitAuthenticatedUser, require("./routes/repairOrderRoutes"));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

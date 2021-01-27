@@ -1,0 +1,49 @@
+<%- include('../fragments/header.ejs') %>
+<script defer type="application/javascript" src="../js/validationCommon.js"></script>
+<script defer type="application/javascript" src="../js/validationRejestracja.js"></script>
+
+<div class="panel flex">
+    <div class="panel-box">
+        <h2 class="h2-rej-log">Zarejestruj się do AutoService CarTu</h2>
+        <form
+            novalidate
+            method="post"
+            class="form-rej-log"
+            action="/register"
+            onsubmit="return validateForm();"
+        >
+
+            <p id="errorsSummary"><%= errorMessage %></p>
+
+            <% if(successMessage) { %>
+                <div class="successMessage"><%- successMessage %></div>
+            <% } %>
+
+             <% if(errorMessage) { %>
+                <div class="errorMessage"><%- errorMessage %></div>
+            <% } %>
+
+            <div class="rej-log-control">
+                <input class="fields" type="text" id="email" name="email" placeholder="E-mail">
+                <span  id="errorEmail" class="errors-text-rej-log"></span>
+            </div>
+
+            <div class="rej-log-control">
+                <input class="fields" type="password" id="password" name="password" placeholder="Hasło">
+                <span id="errorPassword" class="errors-text-rej-log"></span>
+            </div>
+
+            <div class="rej-log-control">
+                <input class="fields" type="password" id="password2" name="password2" placeholder="Powtórz hasło">
+                <span id="errorPassword2" class="errors-text"></span>
+            </div>
+
+            <div class="rej-log-control">
+                <input type="submit" value="Zarejestruj się" class="button-rej-log"/>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<%- include('../fragments/footer.ejs') %>

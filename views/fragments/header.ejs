@@ -5,26 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AutoServis CarTu</title>
     <link rel="stylesheet" href="../css/style.css"/>
-    
-   
 </head>
 <body>
+
 <header>
     <h1>AutoService CarTu</h1>
     <img src="../images/logo.png" alt="">
-    
-    
 </header>
+
 <nav>
     <ul>
-        
-        <li><a href="/" class="<%= navLocation == 'main' ? 'active' : ''%>">Strona główna</a></li>
-        <li><a href="/uzytkownik" class="<%= navLocation == 'uzytkownik' ? 'active' : ''%>">Użytkownik</a></li>
-        <li><a href="/samochod" class="<%= navLocation == 'samochod' ? 'active' : ''%>">Samochód</a></li>
-        <li><a href="/zlecenie" class="<%= navLocation == 'zlecenie' ? 'active' : ''%>">Zlecenie naprawy</a></li>
-        <li><a href="/warsztat" class="<%= navLocation == 'warsztat' ? 'active' : ''%>">Warsztat</a></li>
-        <li><a href="/adres" class="<%= navLocation == 'adres' ? 'active' : ''%>">Adres</a></li>
-        <li><a href ="../index.html">Wyloguj</a></li>
-           
+        <% var selected = '' %>
+        <% if(locals.navLocation !== undefined) { selected = locals.navLocation } %>
+        <% if(loggedUser) {%>
+            <li><a href="/" class="<%= selected == 'main' ? 'active' : ''%>">Strona główna</a></li>
+            <li><a href="/uzytkownik" class="<%= selected == 'uzytkownik' ? 'active' : ''%>">Użytkownik</a></li>
+            <li><a href="/samochod" class="<%= selected == 'samochod' ? 'active' : ''%>">Samochód</a></li>
+            <li><a href="/zlecenie" class="<%= selected == 'zlecenie' ? 'active' : ''%>">Zlecenie naprawy</a></li>
+            <li><a href="/warsztat" class="<%= selected == 'warsztat' ? 'active' : ''%>">Warsztat</a></li>
+            <li><a href="/adres" class="<%= selected == 'adres' ? 'active' : ''%>">Adres</a></li>
+            <li><a href ="/logout">Wyloguj</a></li>
+        <% } else { %>
+            <li><a href="/" class="<%= selected == 'main' ? 'active' : ''%>">Strona główna</a></li>
+            <li><a href="/rejestracja" class="<%= selected == 'rejestracja' ? 'active' : ''%>">Rejestracja</a></li>
+            <li><a href="/logowanie" class="<%= selected == 'logowanie' ? 'active' : ''%>">Logowanie</a></li>
+        <% } %>
     </ul>
 </nav>

@@ -1,4 +1,5 @@
 const sequelize = require("./sequelize");
+const authUtils = require("../../utils/authUtils");
 
 const Workshop = require("../../model/sequelize/Workshop");
 const User = require("../../model/sequelize/User");
@@ -32,10 +33,7 @@ module.exports = () => {
     })
     .then((roles) => {
       if (!roles || roles.length == 0) {
-        return Role.bulkCreate([
-          { name: "administrator" },
-          { name: "użytkownik" },
-        ]).then(() => {
+        return Role.bulkCreate([{ name: "administrator" }, { name: "użytkownik" }]).then(() => {
           return Role.findAll();
         });
       } else {
@@ -47,10 +45,11 @@ module.exports = () => {
     })
     .then((users) => {
       if (!users || users.length == 0) {
+        const password = authUtils.hashPassword("test123");
         return User.bulkCreate([
-          { email: "administrator@test.com", password: "test123", RoleId: 1 },
-          { email: "uzytkownik@test.com", password: "test123", RoleId: 2 },
-          { email: "gosia@test.com", password: "test123", RoleId: 2 },
+          { email: "administrator@test.com", password, RoleId: 1 },
+          { email: "uzytkownik@test.com", password, RoleId: 2 },
+          { email: "gosia@test.com", password, RoleId: 2 },
         ]).then(() => {
           return User.findAll();
         });

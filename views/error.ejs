@@ -1,0 +1,9 @@
+<%- include('fragments/header.ejs') %>
+
+<main>
+    <h2>Wystąpił błąd</h2>
+    <b><%= error.status %> - <%= message %></b>
+    <pre><%= error.stack %></pre>
+</main>
+
+<%- include('fragments/footer.ejs') %>

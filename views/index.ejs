@@ -1,26 +1,4 @@
-<!DOCTYPE html>
-<html lang="pl-PL"></html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoServis CarTu</title>
-    <link rel="stylesheet" href="css/style.css"/>
-
-</head>
-<body>
-<header>
-    <h1>AutoService CarTu</h1>
-    <img src="images/logo.png" alt="">
-    
-</header>
-</nav>
-<nav>
-    <ul>
-        <li><a href="index.html" class="active">Strona główna</a></li>
-        <li ><a class="right-menu" href ="pages/rejestracja.html">Rejestracja</a></li>
-        <li class="right-menu"><a href ="pages/logowanie.html">Logowanie</a></li>
-    </ul>
-</nav>
+<%- include('fragments/header.ejs') %>
 <main>
     <h2>Strona główna</h2>
     <h3>Twój dobry mechanik samochodowy – to My! </h3>
@@ -32,17 +10,17 @@
         <p>
             Jesteśmy profesjonalnym serwisem samochodowym zajmującym się świadczeniem fachowych usług związanych z naprawą pojazdów mechanicznych. Bardzo dużym atutem naszej firmy jest szeroka oferta obejmująca między innymi naprawy silników, wymianę rozrządu i innych ważnych komponentów. Dodatkowo w ofercie posiadamy wymianę sprzęgła, a także standardowe czynności serwisowe, które należy wykonywać regularnie, aby zapewnić wydajne i niezawodne działanie samochodu przez długi czas.
         </p>
-        
+
         <p>
             Siedzibą naszej firmy jest Warszawa i to właśnie do klientów ze stolicy oraz jej okolic kierowana jest nasza oferta. Oczywiście po pomoc mogą przyjeżdżać do nas również inni zainteresowani klienci. Każdego traktujemy poważnie i fachowo. Usługi kierujemy do klientów indywidualnych oraz firm.
         </p>
-        
+
         <p>
             Warto zaznaczyć, że oprócz typowych napraw silników oferujemy szereg innych usług, takich jak na przykład wulkanizacja, serwis klimatyzacji, ustawianie geometrii zawieszenia, wymiana sprzęgła, itp. Wszystkie zlecenia są wykonywane przez personel posiadający duże doświadczenie i wysokie kwalifikacje oraz obsługujący nowoczesne zaplecze techniczne, które posiadamy w naszym warsztacie. Sprawdzony warsztat samochodowy w Warszawie!
         </p>
         Zależy nam na pełnej satysfakcji klienta. Wszystkie zadania wykonywane są w krótkim czasie, ale mimo to bardzo dokładnie. Ceny naszych usług nie są wygórowane, więc warto skorzystać z naszej pomocy, gdy zajdzie taka potrzeba.
         <p></p>
-        
-    <img class="displayed foto" src="images/strona-glowna.jpg" alt="">  
+
+    <img class="displayed foto" src="images/strona-glowna.jpg" alt="">
 </main>
-<%- include('./fragments/footer.ejs') %>
+<%- include('fragments/footer.ejs') %>

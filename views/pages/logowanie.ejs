@@ -1,0 +1,42 @@
+<%- include('../fragments/header.ejs') %>
+<script defer type="application/javascript" src="../js/validationCommon.js"></script>
+<script defer type="application/javascript" src="../js/validationLogowanie.js"></script>
+
+<div class="panel flex">
+    <div class="panel-box">
+        <h2 class="h2-rej-log">AutoService CarTu Zaloguj</h2>
+        <form
+            novalidate
+            method="post"
+            action="/login"
+            class="form-rej-log"
+            onsubmit="return validateForm();"
+        >
+            <% if(successMessage) { %>
+                <div class="successMessage"><%- successMessage %></div>
+            <% } %>
+
+             <% if(errorMessage) { %>
+                <div class="errorMessage"><%- errorMessage %></div>
+            <% } %>
+
+            <p id="errorsSummary"></p>
+
+            <div class="rej-log-control">
+                <input class="fields" type="email" id="email" name="email" placeholder="Email">
+                <span id="errorEmail" class="errors-text-rej-log"></span>
+            </div>
+
+            <div class="rej-log-control">
+                <input class="fields" type="password" id="password" name="password" placeholder="Hasło">
+                <span id="errorPassword" class="errors-text"></span>
+            </div>
+
+            <div class="rej-log-control">
+                <input type="submit" value="Zaloguj" class="button-rej-log"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<%- include('../fragments/footer.ejs') %>
