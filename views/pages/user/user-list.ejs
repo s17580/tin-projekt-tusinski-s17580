@@ -1,0 +1,46 @@
+<%- include('../../fragments/header.ejs') %>
+<main>
+    <h2>Lista użytkowników</h2>
+
+    <table class="table-list">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>E-mail</th>
+                <th>Rola</th>
+                <th>Data utworzenia</th>
+                <th>Data aktualizacji</th>
+                <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if(users && users.length > 0) { %>
+                <% users.map(user => { %>
+                    <tr>
+                        <td><%- user.id %></td>
+                        <td><%= user.email %></td>
+                        <td><%= user.Role.name %></td>
+                        <td><%- new Date(user.createdAt).toLocaleString() %></td>
+                        <td><%- new Date(user.updatedAt).toLocaleString() %></td>
+                        <td>
+                            <ul class="list-actions">
+                                <li>
+                                    <a href="/users/<%- user.id %>/edit" class="list-actions-button-edit">Edytuj</a>
+                                </li>
+                                <li>
+                                    <a href="" class="list-actions-button-delete">Usuń</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                <% }) %>
+            <% } else { %>
+                <tr>
+                    <td colspan="100%" style="text-align: center;">W systemie nie ma jeszcze żadnych użytkowników.</td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+    <p></p>
+</main>
+<%- include('../../fragments/footer.ejs') %>

@@ -11,6 +11,9 @@ const Role = sequelize.define(
   },
   {
     underscored: true,
+    defaultScope: {
+      attributes: { exclude: ["createdAt", "updatedAt"] },
+    },
   }
 );
 module.exports = Role;

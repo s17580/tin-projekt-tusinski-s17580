@@ -1,12 +1,23 @@
 const User = require("../../model/sequelize/User");
+const Role = require("../../model/sequelize/Role");
+
+exports.getUserRoles = () => {
+  return Role.findAll();
+};
 
 exports.getUsers = () => {
   return User.findAll();
 };
 
-exports.findByEmail = (email) => {
+exports.findById = (id) => {
   return User.findOne({
-    where: { email: email },
+    where: { id },
+  });
+};
+
+exports.findByEmail = (email) => {
+  return User.scope("withPassword").findOne({
+    where: { email },
   });
 };
 

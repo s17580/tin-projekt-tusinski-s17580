@@ -41,11 +41,11 @@ app.use((req, res, next) => {
 });
 
 app.use("/", require("./routes/index"));
-app.use("/samochod", authUtils.permitAuthenticatedUser, require("./routes/carRoutes"));
-app.use("/adres", authUtils.permitAuthenticatedUser, require("./routes/addresRoutes"));
-app.use("/uzytkownik", authUtils.permitAuthenticatedUser, require("./routes/userRoutes"));
-app.use("/warsztat", authUtils.permitAuthenticatedUser, require("./routes/workshopRoutes"));
-app.use("/zlecenie", authUtils.permitAuthenticatedUser, require("./routes/repairOrderRoutes"));
+app.use("/cars", authUtils.permitAuthenticatedUser, require("./routes/carRoutes"));
+app.use("/addresses", authUtils.permitAuthenticatedUser, require("./routes/addresRoutes"));
+app.use("/users", authUtils.permitAuthenticatedUser, require("./routes/userRoutes"));
+app.use("/workshops", authUtils.permitAuthenticatedUser, require("./routes/workshopRoutes"));
+app.use("/repair-orders", authUtils.permitAuthenticatedUser, require("./routes/repairOrderRoutes"));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

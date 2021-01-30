@@ -1,12 +1,9 @@
-exports.showSamochodList = (req, res, next) => {
-    res.render('pages/samochod/samochod-list', {navLocation: 'samochod'});
-}
-exports.showAddSamochodForm = (req, res, next) => {
-    res.render('pages/samochod/samochod-form', {navLocation: 'samochod'});
-}
-exports.showSamochodnDetails = (req, res, next) => {
-    res.render('pages/samochod/samochod-details', {navLocation: 'samochod'});
-}
-
-
-
+exports.showCarsList = (req, res, next) => {
+  res.render("pages/cars/cars-list", { navLocation: "cars" });
+};
+exports.showCarForm = (req, res, next) => {
+  res.render("pages/cars/car-form", { navLocation: "cars" });
+};
+exports.showCarDetails = (req, res, next) => {
+  res.render("pages/cars/car-details", { navLocation: "cars" });
+};

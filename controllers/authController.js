@@ -16,20 +16,20 @@ exports.login = (req, res, next) => {
         .map((el) => el.msg)
         .join("<br>")
     );
-    return res.redirect("/logowanie");
+    return res.redirect("/login");
   }
 
   UserRepository.findByEmail(email)
     .then((user) => {
       if (!user) {
         req.flash("error", "Nieprawidłowy adres email lub hasło");
-        res.redirect("/logowanie");
+        res.redirect("/login");
       } else if (authUtils.comparePasswords(password, user.password) === true) {
         req.session.loggedUser = user;
         res.redirect("/");
       } else {
         req.flash("error", "Nieprawidłowy adres email lub hasło");
-        res.redirect("/logowanie");
+        res.redirect("/login");
       }
     })
     .catch((err) => {
@@ -57,14 +57,14 @@ exports.register = (req, res, next) => {
         .map((el) => el.msg)
         .join("<br>")
     );
-    return res.redirect("/rejestracja");
+    return res.redirect("/register");
   }
 
   UserRepository.findByEmail(email)
     .then((user) => {
       if (user) {
         req.flash("error", "Użytkownik o tym adresie email już istnieje.");
-        res.redirect("/rejestracja");
+        res.redirect("/register");
       } else {
         UserRepository.createUser({
           email,
@@ -72,12 +72,12 @@ exports.register = (req, res, next) => {
         })
           .then(() => {
             req.flash("success", "Rejestracja pomyślna, możesz się zalogować.");
-            res.redirect("/logowanie");
+            res.redirect("/login");
           })
           .catch((err) => {
             console.log(err);
             req.flash("error", "Wystąpił błąd");
-            res.redirect("/rejestracja");
+            res.redirect("/register");
           });
       }
     })

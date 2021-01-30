@@ -7,12 +7,12 @@ router.get("/", function (req, res, next) {
   res.render("index", { navLocation: "main" });
 });
 
-router.get("/logowanie", function (req, res, next) {
-  res.render("pages/logowanie", { navLocation: "logowanie" });
+router.get("/login", function (req, res, next) {
+  res.render("pages/login", { navLocation: "login" });
 });
 
-router.get("/rejestracja", function (req, res, next) {
-  res.render("pages/rejestracja", { navLocation: "rejestracja" });
+router.get("/register", function (req, res, next) {
+  res.render("pages/register", { navLocation: "register" });
 });
 
 router.post("/register", v.validate("register"), AuthController.register);

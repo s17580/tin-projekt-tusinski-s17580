@@ -1,8 +1,8 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const uzytkownikControler = require('../controllers/uzytkownikController');
+const userController = require("../controllers/userController");
 
-router.get('/', uzytkownikControler.showUzytkownikList);
-//router.get('/add', samochodControler.showAddSamochodForm);
-//router.get('/details/:samochodId', samochodControler.showSamochodDetails);
+router.get("/", userController.showUserList);
+router.get("/:id/edit", userController.showUserEditForm);
+
 module.exports = router;
