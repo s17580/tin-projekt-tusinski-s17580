@@ -275,15 +275,25 @@ textarea {
 
 .form label {
   display: block;
-  margin-bottom: 0.5em;
+  margin-bottom: auto;
+  margin-top: auto;
 }
 
 .form-group {
   margin-bottom: 1rem;
 }
 
+form input[type="submit"] {
+  cursor: pointer;
+}
+
 abbr[title="required"] {
   color: #c0392b;
+}
+
+.max450 {
+  max-width: 450px;
+  margin-bottom: 20px;
 }
 
 .form-buttons {
@@ -432,6 +442,7 @@ fields:focus {
   color: white;
   background-color: #e74c3c;
   padding: 10px;
+  max-width: 450px;
 }
 
 .successMessage {
@@ -449,10 +460,11 @@ fields:focus {
   line-height: 22px;
 }
 
-.errors-text {
+.errors-text,
+.form-error {
   color: #e74c3c;
   font-size: 0.85em;
-  line-height: 2.25rem;
+  line-height: 2.4rem;
 }
 
 .errors-text-rej-log {

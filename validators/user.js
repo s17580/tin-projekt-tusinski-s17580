@@ -38,5 +38,27 @@ exports.validate = (method) => {
         }),
       ];
     }
+
+    case "update": {
+      return [
+        body("email")
+          .exists()
+          .withMessage("Email jest wymagany")
+          .isEmail()
+          .withMessage("Email jest niepoprawny"),
+        body("password").custom((value, { req }) => {
+          if (value !== "" && (value.length < 6 || value.length > 12)) {
+            throw new Error("Hasło musi mieć od 6 do 12 znaków");
+          } else {
+            return true;
+          }
+        }),
+        body("role")
+          .exists()
+          .withMessage("Rola jest wymagana")
+          .isInt({ gt: 0 })
+          .withMessage("Rola jest niepoprawna"),
+      ];
+    }
   }
 };

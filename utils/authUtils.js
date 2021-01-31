@@ -17,6 +17,6 @@ exports.permitAuthenticatedUser = (req, res, next) => {
   if (loggedUser) {
     next();
   } else {
-    res.redirect("/logowanie");
+    res.redirect("/login");
   }
 };

@@ -2,6 +2,14 @@
 <main>
     <h2>Lista użytkowników</h2>
 
+    <% if(successMessage) { %>
+        <div class="successMessage"><%- successMessage %></div>
+    <% } %>
+
+    <% if(errorMessage) { %>
+        <div class="errorMessage"><%- errorMessage %></div>
+    <% } %>
+
     <table class="table-list">
         <thead>
             <tr>
@@ -28,7 +36,9 @@
                                     <a href="/users/<%- user.id %>/edit" class="list-actions-button-edit">Edytuj</a>
                                 </li>
                                 <li>
-                                    <a href="" class="list-actions-button-delete">Usuń</a>
+                                    <form method="post" action="/users/<%- user.id %>/delete" >
+                                        <input type="submit" class="list-actions-button-delete" value="Usuń" />
+                                    </form>
                                 </li>
                             </ul>
                         </td>

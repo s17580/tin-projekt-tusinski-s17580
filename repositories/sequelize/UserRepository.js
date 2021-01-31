@@ -30,11 +30,11 @@ exports.createUser = (data) => {
 };
 
 exports.updateUser = (userId, data) => {
-  return User.update(data, { where: { _id: userId } });
+  return User.update(data, { where: { id: userId } });
 };
 
 exports.deleteUser = (userId) => {
   return User.destroy({
-    where: { _id: userId },
+    where: { id: userId },
   });
 };

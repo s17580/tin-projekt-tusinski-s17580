@@ -45,7 +45,6 @@ exports.logout = (req, res, next) => {
 exports.register = (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
-  const password2 = req.body.password2;
 
   // walidacja parametrów
   const errors = validationResult(req);
