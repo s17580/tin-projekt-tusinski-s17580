@@ -19,6 +19,7 @@
         method="post"
         class="form"
         action="/users/<%- user.id %>"
+        onsubmit="return validateForm();"
     >
         <label for="role">Rola:</label>
         <select name="role" id="role" value="<%- user.RoleId %>">
