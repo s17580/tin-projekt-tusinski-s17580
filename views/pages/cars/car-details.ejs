@@ -1,67 +1,70 @@
 <%- include('../../fragments/header.ejs') %>
 <main>
     <h2>Szczegóły samochodu</h2>
-    
+
     <form class="form">
-
-        
-        <label for="marka">Marka:<sup></sup></label>
-        <input type="text" name="marka" value="BMW" id="marka" disabled />
+        <label for="marka">Marka:</label>
+        <input type="text" id="marka" value="<%= car.marka %>" id="marka" disabled />
         <span></span>
 
-        
-        <label for="typ">Typ:<sup></sup></label>
-        <input type="text" name="typ" value="330d" id="typ" disabled />
+        <label for="typ">Typ:</label>
+        <input type="text" id="typ" value="<%= car.typ %>" id="typ" disabled />
         <span></span>
 
-        <label for="numer_rejestracyjny">Numer rej.:<sup></sup></label>
-        <input type="text" name="numer_rejestracyjny" value="Wj3451TRd" id="numer_rejestracyjny" disabled />
+        <label for="numer_rejestracyjny">Numer rej.:</label>
+        <input type="text" id="numer_rejestracyjny" value="<%= car.numer_rejestracyjny %>" id="numer_rejestracyjny" disabled />
         <span></span>
 
-        
-        <label for="rok_produkcji">Rok produkcji :<sup></sup></label>
-        <input type="text" name="rok_produkcji" value="2017" id="rok_produkcji" disabled />
+        <label for="rok_produkcji">Rok produkcji :</label>
+        <input type="text" id="rok_produkcji" value="<%= car.rok_produkcji %>" id="rok_produkcji" disabled />
         <span></span>
 
-        
-        <label for="pojemnosc">Pojemność:<sup></sup></label>
-        <input type="text" name="pojemnosc" value="3300 cm3" id="pojemnosc" disabled />
+        <label for="pojemnosc">Pojemność:</label>
+        <input type="text" id="pojemnosc" value="<%= car.pojemnosc %> cm3" id="pojemnosc" disabled />
         <span></span>
     </form>
 
-    <div class = "section-buttons" >
-        <a href="samochod-edit.html"class = "list-actions-button-edit">Edytuj</a>    
-    </div>  
+    <div class="section-buttons" style="margin-top: 30px">
+        <a href="/cars/<%= car.id %>/edit"class = "list-actions-button-edit">Edytuj</a>
+    </div>
 
-    <h2>Szczegóły zlecenia naprawy</h2>
+    <h2>Zlecenia naprawy</h2>
 
-    <table class="table-list"> 
-        
+    <table class="table-list">
         <thead>
             <tr>
-                <th>Data rozpoczęcia</th>
-                <th>Data zakończenia</th>
+                <th>ID Zlecenia</th>
+                <th>Nazwa Warsztatu</th>
+                <th>Data Rozpoczęcia</th>
+                <th>Data Zakończenia</th>
+                <th>Rodzaj Naprawy</th>
                 <th>Koszt Naprawy</th>
-                <th>Rodzaj naprawy</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>2020.11.12</td>
-                <td>2020.11.14</td>
-                <td>1200 PLN</td>
-                <td>wymiana klocków</td>
-                </td>
-            </tr>
+            <% if(repairOrders && repairOrders.length > 0) { %>
+                <% repairOrders.map(order => { %>
+                    <tr>
+                        <td><%= order.id%></td>
+                        <td><%= order.Workshop.nazwa %></td>
+                        <td><%= new Date(order.data_od).toLocaleString() %></td>
+                        <td><%= new Date(order.data_do).toLocaleString() %></td>
+                        <td><%= order.RepairType.rodzaj %></td>
+                        <td><%= order.koszt_naprawy %> zł</td>
+                    </tr>
+                <% }) %>
+            <% } else { %>
+                <tr>
+                    <td colspan="100%" style="text-align: center;">Ten samochód nie ma żadnych zleceń naprawy.</td>
+                </tr>
+            <% } %>
         </tbody>
     </table>
     <br>
-        <div class = "section-buttons" >
-            <a href="samochod-list.html"class = "list-actions-button-details">Powrót</a>    
-        </div> 
+        <div class="section-buttons" >
+            <a href="/cars"class = "list-actions-button-details">Powrót</a>
+        </div>
 
-     
+
 </main>
 <%- include('../../fragments/footer.ejs') %>
-
-

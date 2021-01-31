@@ -40,6 +40,8 @@ function validateForm() {
   if (!valid) {
     errorsSummary.innerText = "Formularz zawiera błędy";
     errorsSummary.style.display = "block";
+  } else {
+    errorsSummary.style.display = "none";
   }
 
   return valid;

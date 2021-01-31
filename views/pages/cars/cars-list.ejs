@@ -2,10 +2,19 @@
 <main>
     <h2>Lista samochodów</h2>
 
+    <% if(successMessage) { %>
+        <div class="successMessage"><%- successMessage %></div>
+    <% } %>
+
+    <% if(errorMessage) { %>
+        <div class="errorMessage"><%- errorMessage %></div>
+    <% } %>
+
     <table class="table-list">
 
         <thead>
             <tr>
+                <th>ID</th>
                 <th>Marka</th>
                 <th>Typ</th>
                 <th>Numer rejestracyjny</th>
@@ -15,49 +24,40 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>BMW</td>
-                <td>330d</td>
-                <td>Wj3451TR</td>
-                <td>2017</td>
-                <td>3300 cm3</td>
-                <td>
-                    <ul class ="list-actions">
-                        <li>
-                            <a href="samochod-details.html"class = "list-actions-button-details">Szczegóły</a>
-                        </li>
-                        <li>
-                            <a href="samochod-edit.html"class = "list-actions-button-edit">Edytuj</a>
-                        </li>
-                        <li>
-                            <a href=""class="list-actions-button-delete">Usuń</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>VW</td>
-                <td>Passat</td>
-                <td>WWL5051GH</td>
-                <td>2010</td>
-                <td>2000 cm3</td>
-                <td>
-                    <ul class ="list-actions">
-                        <li>
-                            <a href=""class = "list-actions-button-details">Szczegóły</a>
-                        </li>
-                        <li>
-                            <a href=""class = "list-actions-button-edit">Edytuj</a>
-                        </li>
-                        <li>
-                            <a href=""class="list-actions-button-delete">Usuń</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
+            <% if(cars && cars.length > 0) { %>
+                <% cars.map(car => { %>
+                    <tr>
+                        <td><%= car.id %></td>
+                        <td><%= car.marka %></td>
+                        <td><%= car.typ %></td>
+                        <td><%= car.numer_rejestracyjny %></td>
+                        <td><%= car.rok_produkcji %></td>
+                        <td><%= car.pojemnosc %></td>
+                        <td>
+                            <ul class ="list-actions">
+                                <li>
+                                    <a href="/cars/<%- car.id %>/details" class="list-actions-button-details">Szczegóły</a>
+                                </li>
+                                <li>
+                                    <a href="/cars/<%- car.id %>/edit" class="list-actions-button-edit">Edytuj</a>
+                                </li>
+                                <li>
+                                    <form method="post" action="/cars/<%- car.id %>/delete" >
+                                        <input type="submit" class="list-actions-button-delete" value="Usuń" />
+                                    </form>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                <% }) %>
+            <% } else { %>
+                <tr>
+                    <td colspan="100%" style="text-align: center;">W systemie nie ma jeszcze żadnych samochodów.</td>
+                </tr>
+            <% } %>
         </tbody>
     </table>
-    <p><a class = "button-add" href="samochod-form.html">Dodaj nowy samochód</a>
+    <p><a class="button-add" href="/cars/add">Dodaj nowy samochód</a>
     </p>
 </main>
 <%- include('../../fragments/footer.ejs') %>

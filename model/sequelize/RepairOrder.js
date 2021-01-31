@@ -1,5 +1,7 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../../config/sequelize/sequelize");
+const Workshop = require("./Workshop");
+const RepairType = require("./RepairType");
 
 const RepairOrder = sequelize.define(
   "RepairOrder",
@@ -19,6 +21,9 @@ const RepairOrder = sequelize.define(
   },
   {
     underscored: true,
+    defaultScope: {
+      include: [Workshop, RepairType],
+    },
   }
 );
 

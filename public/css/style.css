@@ -450,6 +450,7 @@ fields:focus {
   color: white;
   background-color: #1db02e;
   padding: 10px;
+  margin-bottom: 20px;
 }
 
 .errorMessage {
@@ -458,6 +459,7 @@ fields:focus {
   background-color: #e74c3c;
   padding: 10px;
   line-height: 22px;
+  margin-bottom: 20px;
 }
 
 .errors-text,
