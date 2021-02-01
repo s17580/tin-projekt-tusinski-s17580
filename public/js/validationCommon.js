@@ -42,8 +42,10 @@ function checkEmail(value) {
   return re.test(value);
 }
 function checkPhone(value) {
-  var phoneRe = /^\d{9}$/g;
-  return phoneRe.test(value);
+  return /^\d{9}$/g.test(value);
+}
+function checkKodPocztowy(value) {
+  return /^\d{2}-\d{3}$/.test(value);
 }
 function checkDate(value) {
   if (!value) {

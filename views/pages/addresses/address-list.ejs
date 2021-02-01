@@ -1,0 +1,54 @@
+<%- include('../../fragments/header.ejs') %>
+<main>
+    <h2>Lista adresów</h2>
+
+    <% if(successMessage) { %>
+        <div class="successMessage"><%- successMessage %></div>
+    <% } %>
+
+    <% if(errorMessage) { %>
+        <div class="errorMessage"><%- errorMessage %></div>
+    <% } %>
+
+    <table class="table-list">
+        <thead>
+            <tr>
+                <th>Ulica</th>
+                <th>Numer lokalu</th>
+                <th>Kod pocztowy</th>
+                <th>Miasto</th>
+                <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if(addresses && addresses.length > 0) { %>
+                <% addresses.map(address => { %>
+                    <tr>
+                        <td><%= address.ulica %></td>
+                        <td><%= address.numer_lokalu %></td>
+                        <td><%= address.kod_pocztowy %></td>
+                        <td><%= address.miasto %></td>
+                        <td>
+                            <ul class ="list-actions">
+                                <li>
+                                    <a href="/addresses/<%- address.id %>/edit"class="list-actions-button-edit">Edytuj</a>
+                                </li>
+                                <li>
+                                    <form method="post" action="/addresses/<%- address.id %>/delete" >
+                                        <input type="submit" class="list-actions-button-delete" value="Usuń" />
+                                    </form>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                <% }) %>
+            <% } else { %>
+                <tr>
+                    <td colspan="100%" style="text-align: center;">W systemie nie ma jeszcze żadnych adresów.</td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+    <p><a class="button-add" href="/addresses/add">Dodaj nowy adres</a></p>
+</main>
+<%- include('../../fragments/footer.ejs') %>

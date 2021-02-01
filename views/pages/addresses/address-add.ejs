@@ -1,0 +1,50 @@
+<%- include('../../fragments/header.ejs') %>
+<script defer type="application/javascript" src="/js/validationCommon.js"></script>
+<script defer type="application/javascript" src="/js/validationAdresForm.js"></script>
+<main>
+    <h2>Nowy adres</h2>
+
+    <% if(successMessage) { %>
+        <div class="successMessage max450"><%- successMessage %></div>
+    <% } %>
+
+    <% if(errorMessage) { %>
+        <div class="errorMessage max450"><%- errorMessage %></div>
+    <% } %>
+
+    <p id="errorsSummary"></p>
+
+    <form
+        novalidate
+        class="form"
+        method="post"
+        action="/addresses"
+        onsubmit="return validateForm();"
+    >
+
+        <label for="ulica">Ulica: <abbr title="required" aria-label="required">*</abbr></label>
+            <input type="text" name="ulica" id="ulica" placeholder="2-35 znaków" />
+            <span id="errorUlica" class="errors-text"></span>
+
+        <label for="numer_lokalu">Numer lokalu: <abbr title="required" aria-label="required">*</abbr></label>
+            <input type="text" name="numer_lokalu" id="numer_lokalu" placeholder="1-6 znaków" />
+            <span id="errorNumer_Lokalu" class="errors-text"></span>
+
+        <label for="kod_pocztowy">Kod pocztowy: <abbr title="required" aria-label="required">*</abbr></label>
+            <input type="text" name="kod_pocztowy" id="kod_pocztowy" placeholder="np. 01-304" />
+            <span id="errorKod_Pocztowy" class="errors-text"></span>
+
+        <label for="miasto">Miasto: <abbr title="required" aria-label="required">*</abbr></label>
+            <input type="text" name="miasto" id="miasto" placeholder="2-35 znaków" />
+            <span id="errorMiasto" class="errors-text"></span>
+
+        <div class="form-buttons" >
+            <p id="errorsSummary" class="errors-text"></p>
+            <input class="form-button-submit" type="submit" value="Dodaj" />
+            <a class="form-button-cancel" href="/addresses">Anuluj</a>
+        </div>
+
+    </form>
+
+</main>
+<%- include('../../fragments/footer.ejs') %>
