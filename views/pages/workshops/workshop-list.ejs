@@ -1,0 +1,57 @@
+<%- include('../../fragments/header.ejs') %>
+<main>
+    <h2>Lista warsztatów</h2>
+
+    <% if(successMessage) { %>
+        <div class="successMessage"><%- successMessage %></div>
+    <% } %>
+
+    <% if(errorMessage) { %>
+        <div class="errorMessage"><%- errorMessage %></div>
+    <% } %>
+
+    <table class="table-list">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nazwa warsztatu</th>
+                <th>Telefon</th>
+                <th>E-mail</th>
+                <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if(workshops && workshops.length > 0) { %>
+                <% workshops.map(workshop => { %>
+                    <tr>
+                        <td><%- workshop.id %></td>
+                        <td><%= workshop.nazwa %></td>
+                        <td><%= workshop.telefon %></td>
+                        <td><%= workshop.email %></td>
+                        <td>
+                            <ul class ="list-actions">
+                                <li>
+                                    <a href="/workshops/<%- workshop.id %>/details" class = "list-actions-button-details">Szczegóły</a>
+                                </li>
+                                <li>
+                                    <a href="/workshops/<%- workshop.id %>/edit" class="list-actions-button-edit">Edytuj</a>
+                                </li>
+                                <li>
+                                    <form method="post" action="/workshops/<%- workshop.id %>/delete" >
+                                        <input type="submit" class="list-actions-button-delete" value="Usuń" />
+                                    </form>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                <% }) %>
+            <% } else { %>
+                <tr>
+                    <td colspan="100%" style="text-align: center;">W systemie nie ma jeszcze żadnych warsztatów.</td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+    <p><a class="button-add" href="/workshops/add">Dodaj nowy warsztat</a></p>
+</main>
+<%- include('../../fragments/footer.ejs') %>

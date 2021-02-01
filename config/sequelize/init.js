@@ -151,13 +151,13 @@ module.exports = () => {
         return Workshop.bulkCreate([
           {
             nazwa: "Bemowo CarTu",
-            telefon: "22 564 23 56",
+            telefon: "789212444",
             email: "bemowo@cartu.pl",
             AddressId: 1,
           },
           {
             nazwa: "Białołęka CarTu",
-            telefon: "22 577 32 44",
+            telefon: "506492622",
             email: "bialoleka@cartu.pl",
             AddressId: 2,
           },
