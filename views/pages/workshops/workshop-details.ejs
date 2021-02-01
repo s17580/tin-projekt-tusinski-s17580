@@ -1,32 +1,31 @@
 <%- include('../../fragments/header.ejs') %>
 <main>
     <h2>Szczegóły warsztatu</h2>
-    
+
     <form class="form">
 
-       
-        <label for="marka">Nazwa Warsztatu:<sup></sup></label>
-        <input type="text" name="marka" value="Bemowo CarTu" id="marka" disabled />
+        <label>Nazwa Warsztatu:<sup></sup></label>
+        <input type="text" value="<%= workshop.nazwa %>" disabled />
         <span></span>
 
-        <label for="typ">Telefon:<sup></sup></label>
-        <input type="text" name="typ" value="22 564 23 56" id="typ" disabled />
+        <label>Telefon:<sup></sup></label>
+        <input type="text" value="<%= workshop.telefon %>" disabled />
         <span></span>
 
-        <label for="numer_rejestracyjny">E-mail:<sup></sup></label>
-        <input type="text" name="numer_rejestracyjny" value=bemowo@cartu.pl id="numer_rejestracyjny" disabled />
+        <label>E-mail:<sup></sup></label>
+        <input type="text" value="<%= workshop.email %>" disabled />
         <span></span>
 
     </form>
 
     <div class = "section-buttons" >
-        <a href="warsztat-form.html"class = "list-actions-button-edit">Edytuj</a>    
-    </div>  
+        <a href="/workshops/<%- workshop.id %>/edit"class = "list-actions-button-edit">Edytuj</a>
+    </div>
 
-    <h2>Szczegóły adresu warsztatu</h2>
+    <h2>Adres warsztatu</h2>
 
-    <table class="table-list"> 
-        
+    <table class="table-list">
+
         <thead>
             <tr>
                 <th>Ulica</th>
@@ -36,22 +35,25 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Górczewska</td>
-                <td>35</td>
-                <td>01-460</td>
-                <td>Warszawa</td>
-                </td>
-            </tr>
+            <% if(workshop.Address) { %>
+                <tr>
+                    <td><%= workshop.Address.ulica %></td>
+                    <td><%= workshop.Address.numer_lokalu %></td>
+                    <td><%= workshop.Address.kod_pocztowy %></td>
+                    <td><%= workshop.Address.miasto %></td>
+                    </td>
+                </tr>
+            <% } %>
         </tbody>
     </table>
 
-    <h2>Szczegóły zleconych napraw warsztatu</h2>
+    <h2>Zlecenia napraw</h2>
 
-    <table class="table-list"> 
-        
+    <table class="table-list">
+
         <thead>
             <tr>
+                <th>ID</th>
                 <th>Marka</th>
                 <th>Typ</th>
                 <th>Num rej.</th>
@@ -62,25 +64,31 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>BMW</td>
-                <td>330d</td>
-                <td>Wj3451TR</td>
-                <td>Wymiana klocków</td>
-                <td>2020.11.12</td>
-                <td>2020.11.14</td>
-                <td>1200 PLN</td>
-                </td>
-            </tr>
+            <% if(workshop.RepairOrders && workshop.RepairOrders.length > 0) { %>
+                <% workshop.RepairOrders.map(order => { %>
+                    <tr>
+                        <td><%= order.id %></td>
+                        <td><%= order.Car.marka %></td>
+                        <td><%= order.Car.typ %></td>
+                        <td><%= order.Car.numer_rejestracyjny %></td>
+                        <td><%= order.RepairType.rodzaj %></td>
+                        <td><%= new Date(order.data_od).toLocaleString() %></td>
+                        <td><%= new Date(order.data_do).toLocaleString() %></td>
+                        <td><%= order.koszt_naprawy %> zł</td>
+                    </tr>
+                <% }) %>
+            <% } else { %>
+                <tr>
+                    <td colspan="100%" style="text-align: center;">Ten warsztat nie ma żadnych zleceń naprawy.</td>
+                </tr>
+            <% } %>
         </tbody>
     </table>
     <br>
         <div class = "section-buttons" >
-            <a href="warsztat-list.html"class = "list-actions-button-details">Powrót</a>    
-        </div> 
+            <a href="/workshops"class = "list-actions-button-details">Powrót</a>
+        </div>
 
-     
+
 </main>
 <%- include('../../fragments/footer.ejs') %>
-
-

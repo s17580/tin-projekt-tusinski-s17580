@@ -33,15 +33,13 @@ exports.showEditForm = (req, res, next) => {
 exports.showWorkshopDetails = (req, res, next) => {
   const workshopId = req.params.id;
 
-  WorkshopRepository.findById(workshopId).then((workshop) => {
+  WorkshopRepository.getWithDetails(workshopId).then((workshop) => {
     if (!workshop) return res.redirect("/workshops");
 
-    // RepairOrderRepository.getByCarId(car.id).then((orders) => {
     res.render("pages/workshops/workshop-details", {
       workshop,
       navLocation: "workshops",
     });
-    // });
   });
 };
 

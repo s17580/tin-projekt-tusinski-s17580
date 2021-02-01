@@ -1,4 +1,6 @@
 const Workshop = require("../../model/sequelize/Workshop");
+const Address = require("../../model/sequelize/Address");
+const RepairOrder = require("../../model/sequelize/RepairOrder");
 
 exports.getWorkshops = () => {
   return Workshop.findAll();
@@ -7,6 +9,13 @@ exports.getWorkshops = () => {
 exports.findById = (id) => {
   return Workshop.findOne({
     where: { id },
+  });
+};
+
+exports.getWithDetails = (id) => {
+  return Workshop.scope("").findOne({
+    where: { id },
+    include: [Address, RepairOrder.scope("withCar")],
   });
 };
 
