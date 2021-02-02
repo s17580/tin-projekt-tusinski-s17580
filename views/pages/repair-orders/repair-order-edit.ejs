@@ -1,0 +1,73 @@
+<%- include('../../fragments/header.ejs') %>
+<script defer type="application/javascript" src="/js/validationCommon.js"></script>
+<script defer type="application/javascript" src="/js/validationZlecenieNaprawyForm.js"></script>
+<main>
+    <h2>Nowe zlecenie naprawy</h2>
+
+    <% if(successMessage) { %>
+        <div class="successMessage max450"><%- successMessage %></div>
+    <% } %>
+
+    <% if(errorMessage) { %>
+        <div class="errorMessage max450"><%- errorMessage %></div>
+    <% } %>
+
+    <p id="errorsSummary"></p>
+
+    <form
+        novalidate
+        class="form"
+        method="post"
+        action="/repair-orders/<%- order.id %>/edit"
+        onsubmit="return validateForm();"
+    >
+
+        <label for="car">Samochód: <abbr title="required" aria-label="required">*</abbr></label>
+        <select name="car_id" id="car">
+            <option value="">--- Wybierz samochód ---</option>
+            <% cars.map(car => { %>
+                <option value="<%- car.id %>" <% if(car.id == order.CarId) { %>selected<% } %>><%= car.marka %> <%= car.typ %> (<%= car.numer_rejestracyjny %>)</option>
+            <% }) %>
+        </select>
+        <span id="errorCar" class="form-error"></span>
+
+        <label for="workshop">Warsztat: <abbr title="required" aria-label="required">*</abbr></label>
+        <select name="workshop_id" id="workshop">
+            <option value="">--- Wybierz warsztat ---</option>
+            <% workshops.map(workshop => { %>
+                <option value="<%- workshop.id %>" <% if(workshop.id == order.WorkshopId) { %>selected<% } %>><%= workshop.nazwa %> (<%= workshop.Address.ulica %> <%= workshop.Address.numer_lokalu %>)</option>
+            <% }) %>
+        </select>
+        <span id="errorWorkshop" class="form-error"></span>
+
+        <label for="repairType">Typ naprawy: <abbr title="required" aria-label="required">*</abbr></label>
+        <select name="repair_type_id" id="repairType">
+            <option value="">--- Wybierz typ naprawy ---</option>
+            <% repairTypes.map(type => { %>
+                <option value="<%- type.id %>" <% if(type.id == order.RepairTypeId) { %>selected<% } %>><%= type.nazwa %> (<%= type.cena %> zł)</option>
+            <% }) %>
+        </select>
+        <span id="errorRepairType" class="form-error"></span>
+
+        <label for="opis">Opis (opcjonalny):<sup></sup></label>
+        <textarea type="text" name="opis" id="opis" rows="6"><%= order.opis %></textarea>
+        <span id="errorOpis" class="form-error"></span>
+
+        <label for="Status">Status: <abbr title="required" aria-label="required">*</abbr></label>
+        <select name="status" id="Status">
+            <option value="OCZEKUJE" <% if(order.status == 'OCZEKUJE' ) { %>selected<% } %>>OCZEKUJE</option>
+            <option value="WYKONANE" <% if(order.status == 'WYKONANE' ) { %>selected<% } %>>WYKONANE</option>
+            <option value="ANULOWANE" <% if(order.status == 'ANULOWANE' ) { %>selected<% } %>>ANULOWANE</option>
+        </select>
+        <span id="errorRepairType" class="form-error"></span>
+
+        <div class="form-buttons" >
+            <input class="form-button-submit" type="submit" value="Zapisz" />
+            <a class="form-button-cancel" href="/repair-orders">Anuluj</a>
+        </div>
+
+    </form>
+
+
+</main>
+<%- include('../../fragments/footer.ejs') %>

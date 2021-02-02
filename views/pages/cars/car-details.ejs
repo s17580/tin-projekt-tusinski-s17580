@@ -35,10 +35,10 @@
             <tr>
                 <th>ID Zlecenia</th>
                 <th>Nazwa Warsztatu</th>
-                <th>Data Rozpoczęcia</th>
-                <th>Data Zakończenia</th>
+                <th>Opis</th>
+                <th>Status</th>
                 <th>Rodzaj Naprawy</th>
-                <th>Koszt Naprawy</th>
+                <th>Cena</th>
             </tr>
         </thead>
         <tbody>
@@ -47,10 +47,10 @@
                     <tr>
                         <td><%= order.id%></td>
                         <td><%= order.Workshop.nazwa %></td>
-                        <td><%= new Date(order.data_od).toLocaleString() %></td>
-                        <td><%= new Date(order.data_do).toLocaleString() %></td>
-                        <td><%= order.RepairType.rodzaj %></td>
-                        <td><%= order.koszt_naprawy %> zł</td>
+                        <td><%= order.opis %></td>
+                        <td><%= order.status %></td>
+                        <td><%= order.RepairType.nazwa %></td>
+                        <td><%= order.RepairType.cena %> zł</td>
                     </tr>
                 <% }) %>
             <% } else { %>

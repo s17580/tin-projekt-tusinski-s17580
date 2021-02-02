@@ -1,0 +1,69 @@
+<%- include('../../fragments/header.ejs') %>
+<main>
+    <h2>Lista zleconych napraw</h2>
+
+    <% if(successMessage) { %>
+        <div class="successMessage"><%- successMessage %></div>
+    <% } %>
+
+    <% if(errorMessage) { %>
+        <div class="errorMessage"><%- errorMessage %></div>
+    <% } %>
+
+    <table class="table-list">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Data utworzenia</th>
+                <th>Marka</th>
+                <th>Typ</th>
+                <th>Numer rej.</th>
+                <th>Nazwa warsztatu</th>
+                <th>Opis</th>
+                <th>Status</th>
+                <th>Rodzaj Naprawy</th>
+                <th>Cena</th>
+                <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if(repairOrders && repairOrders.length > 0) { %>
+                <% repairOrders.map(order => { %>
+                    <tr>
+                        <td><%= order.id %></td>
+                        <td><%= new Date(order.createdAt).toLocaleString() %></td>
+                        <td><%= order.Car.marka %></td>
+                        <td><%= order.Car.typ %></td>
+                        <td><%= order.Car.numer_rejestracyjny %></td>
+                        <td><%= order.Workshop.nazwa %></td>
+                        <td><%= order.opis %></td>
+                        <td><%= order.status %></td>
+                        <td><%= order.RepairType.nazwa %></td>
+                        <td><%= order.RepairType.cena %> zł</td>
+                        <td>
+                            <ul class ="list-actions">
+                                <li>
+                                    <a href="/repair-orders/<%- order.id %>/details"class="list-actions-button-details">Szczegóły</a>
+                                </li>
+                                <li>
+                                    <a href="/repair-orders/<%- order.id %>/edit"class="list-actions-button-edit">Edytuj</a>
+                                </li>
+                                <li>
+                                    <form method="post" action="/repair-orders/<%- order.id %>/delete" >
+                                        <input type="submit" class="list-actions-button-delete" value="Usuń" />
+                                    </form>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                <% }) %>
+            <% } else { %>
+                <tr>
+                    <td colspan="100%" style="text-align: center;">W systemie nie ma jeszcze żadnych adresów.</td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+    <p><a class="button-add" href="/repair-orders/add">Dodaj nowe zlecenie naprawy</a></p>
+</main>
+<%- include('../../fragments/footer.ejs') %>

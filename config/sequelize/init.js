@@ -92,13 +92,13 @@ module.exports = () => {
     .then((repairTypes) => {
       if (!repairTypes || repairTypes.length == 0) {
         return RepairType.bulkCreate([
-          { rodzaj: "wymiana klocków hamulcowych", RepairTypeId: 1 },
-          { rodzaj: "wymiana rozrządu", RepairTypeId: 2 },
-          { rodzaj: "serwis olejowy", RepairTypeId: 3 },
-          { rodzaj: "wymiana tarcz", RepairTypeId: 4 },
-          { rodzaj: "diagnoza komputerowa", RepairTypeId: 5 },
-          { rodzaj: "przegląd okresowy", RepairTypeId: 6 },
-          { rodzaj: "wymiana płynów eksploatacyjnych", RepairTypeId: 7 },
+          { nazwa: "wymiana klocków hamulcowych", cena: 149.99 },
+          { nazwa: "wymiana rozrządu", cena: 1500 },
+          { nazwa: "serwis olejowy", cena: 490.99 },
+          { nazwa: "wymiana tarcz", cena: 270 },
+          { nazwa: "diagnoza komputerowa", cena: 65.99 },
+          { nazwa: "przegląd okresowy", cena: 99.99 },
+          { nazwa: "wymiana płynów eksploatacyjnych", cena: 170.2 },
         ]).then(() => {
           return RepairType.findAll();
         });
@@ -175,17 +175,15 @@ module.exports = () => {
       if (!repairOrders || repairOrders.length == 0) {
         return RepairOrder.bulkCreate([
           {
-            data_od: "2021-01-14",
-            data_do: "2021-01-16",
-            koszt_naprawy: 745.4,
+            status: "WYKONANE",
+            opis: "Proszę o wymianę filtrów i olejów",
             CarId: 1,
             WorkshopId: 1,
             RepairTypeId: 3,
           },
           {
-            data_od: "2021-01-10",
-            data_do: "2021-01-15",
-            koszt_naprawy: 1467.8,
+            status: "OCZEKUJE",
+            opis: "Dziwny dzwięk przy starcie silnika",
             CarId: 2,
             WorkshopId: 2,
             RepairTypeId: 2,

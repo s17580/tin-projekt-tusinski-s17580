@@ -1,5 +1,6 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../../config/sequelize/sequelize");
+const Address = require("./Address");
 
 const Workshop = sequelize.define(
   "Workshop",
@@ -20,6 +21,9 @@ const Workshop = sequelize.define(
   },
   {
     underscored: true,
+    defaultScope: {
+      include: [Address],
+    },
   }
 );
 

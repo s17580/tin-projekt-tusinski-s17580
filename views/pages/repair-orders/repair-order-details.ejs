@@ -1,0 +1,51 @@
+<%- include('../../fragments/header.ejs') %>
+<main>
+    <h2>Szczegóły zlecenia naprawy</h2>
+
+    <form class="form">
+
+        <label for="nazwa_warsztatu">Nazwa warsztatu:<sup></sup></label>
+        <input type="text" name="nazwa warsztatu" value="<%= order.Workshop.nazwa %>" id="nazwa_warsztatu" disabled />
+        <span></span>
+
+        <label for="marka">Marka samochodu:<sup></sup></label>
+        <select name="marka" id="marka" disabled><option><%= order.Car.marka %></option></select>
+        <span></span>
+
+        <label for="numer_rej">Numer rej:<sup></sup></label>
+        <input type="text" name="numer_rej" value="<%= order.Car.numer_rejestracyjny %>" id="numer_rej" disabled />
+        <span></span>
+
+        <label for="rok_prod">Rok produkcji:<sup></sup></label>
+        <input type="text" name="rok_prod" value="<%= order.Car.rok_produkcji %>" id="rok_prod" disabled />
+        <span></span>
+
+        <label for="rodzaj">Rodzaj naprawy:<sup></sup></label>
+        <input type="text" name="rodzaj" value="<%= order.RepairType.nazwa %>" id="rodzaj" disabled />
+        <span></span>
+
+        <label for="cena">Cena:<sup></sup></label>
+        <input type="text" name="nazwa warsztatu" value="<%= order.RepairType.cena %> zł" id="cena" disabled />
+        <span></span>
+
+        <label for="data_utworzenia">Data utworzenia:<sup></sup></label>
+        <input type="text" name="data_utworzenia" value="<%= new Date(order.createdAt).toLocaleString() %>" id="data_od" disabled />
+        <span></span>
+
+
+        <label for="opis">Opis:<sup></sup></label>
+        <textarea type="text" name="opis"  id="koszt_naprawy" disabled rows="6"><%= order.opis %></textarea>
+        <span></span>
+    </form>
+
+    <div class="form-buttons">
+        <a href="/repair-orders/<%- order.id %>/edit" class="list-actions-button-edit">Edytuj</a>
+    </div>
+
+    <br>
+    <div class="form-buttons">
+        <a href="/repair-orders" class="list-actions-button-details">Powrót</a>
+    </div>
+
+</main>
+<%- include('../../fragments/footer.ejs') %>

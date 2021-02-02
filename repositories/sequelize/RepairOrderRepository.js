@@ -17,7 +17,12 @@ exports.getByCarId = (carId) => {
 };
 
 exports.createRepairOrder = (data) => {
-  return RepairOrder.create({});
+  const CarId = data.CarId;
+  const WorkshopId = data.WorkshopId;
+  const RepairTypeId = data.RepairTypeId;
+  const opis = data.opis;
+
+  return RepairOrder.create({ CarId, WorkshopId, RepairTypeId, opis });
 };
 
 exports.updateRepairOrder = (repairOrderId, data) => {

@@ -7,23 +7,20 @@ const Car = require("./Car");
 const RepairOrder = sequelize.define(
   "RepairOrder",
   {
-    data_od: {
-      type: Sequelize.DATE,
+    status: {
+      type: Sequelize.STRING(20),
       allowNull: false,
+      defaultValue: "OCZEKUJACE",
     },
-    data_do: {
-      type: Sequelize.DATE,
-      allowNull: false,
-    },
-    koszt_naprawy: {
-      type: Sequelize.DECIMAL(7, 2),
-      allowNull: false,
+    opis: {
+      type: Sequelize.STRING(300),
+      allowNull: true,
     },
   },
   {
     underscored: true,
     defaultScope: {
-      include: [Workshop, RepairType],
+      include: [Car, Workshop, RepairType],
     },
     scopes: {
       withCar: { include: [Car, RepairType] },
