@@ -172,6 +172,7 @@ main h2 {
   display: inline-block;
   width: 75px;
   padding: 0.25rem 0.5rem;
+  cursor: pointer;
 }
 
 .list-actions-button-details,

@@ -1,4 +1,6 @@
 <%- include('../../fragments/header.ejs') %>
+<script defer src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script defer type="application/javascript" src="/js/deleteConfirmation.js"></script>
 <main>
     <h2>Lista adresów</h2>
 
@@ -34,8 +36,8 @@
                                     <a href="/addresses/<%- address.id %>/edit"class="list-actions-button-edit">Edytuj</a>
                                 </li>
                                 <li>
-                                    <form method="post" action="/addresses/<%- address.id %>/delete" >
-                                        <input type="submit" class="list-actions-button-delete" value="Usuń" />
+                                    <form method="post" id="address-<%- address.id %>" action="/addresses/<%- address.id %>/delete">
+                                        <button onclick="confirmDelete('address-<%- address.id %>')" type="button" class="list-actions-button-delete">Usuń</button>
                                     </form>
                                 </li>
                             </ul>
