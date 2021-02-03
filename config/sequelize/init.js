@@ -10,21 +10,21 @@ const Address = require("../../model/sequelize/Address");
 const Role = require("../../model/sequelize/Role");
 
 module.exports = () => {
-  User.belongsTo(Role);
-  Role.hasMany(User);
+  User.belongsTo(Role, { onDelete: "cascade" });
+  Role.hasMany(User, { onDelete: "cascade" });
 
-  User.hasMany(Car);
-  Car.belongsTo(User);
+  User.hasMany(Car, { onDelete: "cascade" });
+  Car.belongsTo(User, { onDelete: "cascade" });
 
-  Car.hasMany(RepairOrder);
-  RepairOrder.belongsTo(Car);
-  RepairOrder.belongsTo(Workshop);
-  RepairOrder.belongsTo(RepairType);
-  RepairType.hasMany(RepairOrder);
+  Car.hasMany(RepairOrder, { onDelete: "cascade" });
+  RepairOrder.belongsTo(Car, { onDelete: "cascade" });
+  RepairOrder.belongsTo(Workshop, { onDelete: "cascade" });
+  RepairOrder.belongsTo(RepairType, { onDelete: "cascade" });
+  RepairType.hasMany(RepairOrder, { onDelete: "cascade" });
 
-  Workshop.hasMany(RepairOrder);
-  Workshop.belongsTo(Address);
-  Address.hasMany(Workshop);
+  Workshop.hasMany(RepairOrder, { onDelete: "cascade" });
+  Workshop.belongsTo(Address, { onDelete: "cascade" });
+  Address.hasMany(Workshop, { onDelete: "cascade" });
 
   return sequelize
     .sync({ force: true })

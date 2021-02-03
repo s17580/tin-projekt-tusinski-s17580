@@ -103,7 +103,7 @@ exports.deleteCar = (req, res, next) => {
 
   CarRepository.deleteCar(carId)
     .then(() => {
-      req.flash("success", "Pomyślnie usunięto samochód");
+      req.flash("success", "Pomyślnie usunięto samochód oraz powiązane z nim rekordy");
       res.redirect("/cars");
     })
     .catch((err) => {

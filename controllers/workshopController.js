@@ -111,7 +111,7 @@ exports.deleteWorkshop = (req, res, next) => {
 
   WorkshopRepository.deleteWorkshop(workshopId)
     .then(() => {
-      req.flash("success", "Pomyślnie usunięto warsztat");
+      req.flash("success", "Pomyślnie usunięto warsztat oraz powiązane z nim rekordy");
       res.redirect("/workshops");
     })
     .catch((err) => {

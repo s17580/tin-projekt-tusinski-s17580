@@ -61,7 +61,7 @@ exports.deleteUser = (req, res, next) => {
 
   UserRepository.deleteUser(userId)
     .then(() => {
-      req.flash("success", "Pomyślnie usunięto użytkownika");
+      req.flash("success", "Pomyślnie usunięto użytkownika oraz powiązane z nim rekordy");
       res.redirect("/users");
     })
     .catch((err) => {

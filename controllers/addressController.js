@@ -94,7 +94,7 @@ exports.deleteAddress = (req, res, next) => {
 
   AddressRepository.deleteAddress(addressId)
     .then(() => {
-      req.flash("success", "Pomyślnie usunięto adres");
+      req.flash("success", "Pomyślnie usunięto adres oraz powiązane z nim rekordy");
       res.redirect("/addresses");
     })
     .catch((err) => {

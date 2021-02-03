@@ -143,7 +143,7 @@ exports.deleteRepairOrder = (req, res, next) => {
 
   RepairOrderRepository.deleteRepairOrder(repairOrder)
     .then(() => {
-      req.flash("success", "Pomyślnie usunięto zlecenie naprawy");
+      req.flash("success", "Pomyślnie usunięto zlecenie naprawy oraz powiązane z nim rekordy");
       res.redirect("/repair-orders");
     })
     .catch((err) => {
