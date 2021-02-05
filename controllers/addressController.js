@@ -79,7 +79,7 @@ exports.updateAddress = (req, res, next) => {
 
   AddressRepository.updateAddress(addressId, { ulica, numer_lokalu, kod_pocztowy, miasto })
     .then(() => {
-      req.flash("success", "Pomyślnie zaaktualizowano adres");
+      req.flash("success", "Pomyślnie zaktualizowano adres");
       res.redirect("/addresses");
     })
     .catch((err) => {

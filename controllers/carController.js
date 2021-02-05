@@ -88,7 +88,7 @@ exports.updateCar = (req, res, next) => {
 
   CarRepository.updateCar(carId, { marka, typ, numer_rejestracyjny, rok_produkcji, pojemnosc })
     .then(() => {
-      req.flash("success", "Pomyślnie zaaktualizowano samochód");
+      req.flash("success", "Pomyślnie zaktualizowano samochód");
       res.redirect("/cars");
     })
     .catch((err) => {

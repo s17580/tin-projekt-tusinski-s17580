@@ -128,7 +128,7 @@ exports.updateRepairOrder = (req, res, next) => {
     status,
   })
     .then(() => {
-      req.flash("success", "Pomyślnie zaaktualizowano zlecenie naprawy");
+      req.flash("success", "Pomyślnie zaktualizowano zlecenie naprawy");
       res.redirect("/repair-orders");
     })
     .catch((err) => {

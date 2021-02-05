@@ -96,7 +96,7 @@ exports.updateWorkshop = (req, res, next) => {
 
   WorkshopRepository.updateWorkshop(workshopId, { nazwa, telefon, email, AddressId })
     .then(() => {
-      req.flash("success", "Pomyślnie zaaktualizowano warsztat");
+      req.flash("success", "Pomyślnie zaktualizowano warsztat");
       res.redirect("/workshops");
     })
     .catch((err) => {
